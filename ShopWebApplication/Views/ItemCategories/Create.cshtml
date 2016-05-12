@@ -1,0 +1,47 @@
+﻿@model ShopWebApplication.Models.Entities.ItemCategory
+
+@{
+    ViewBag.Title = "إضافة تصنيف جديد";
+}
+
+<h2>إضافة تصنيف جديد</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>بيانات التصنيف الجديد</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <table dir="rtl" style="width:100%">
+            <tr>
+                <th style="width:20%" align="right">
+                    اسم التصنيف
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th style="width:20%" align="right">
+                    ملاحظات على التصنيف
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        </table>
+        <hr />        
+    </div>
+}
+
+<div>
+    @Html.ActionLink("الرجوع إلى قائمة التصنيفات", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

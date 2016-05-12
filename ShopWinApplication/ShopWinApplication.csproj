@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2612323B-5B4F-4E35-AE21-8BF4F40FA11E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopWinApplication</RootNamespace>
+    <AssemblyName>ShopWinApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\BuyOrder.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BuyOrderItem.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Credit.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CreditTransaction.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Customer.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Debit.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DebitTransaction.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Expense.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ExternalCredit.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ExternalCreditTransaction.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ExternalDebit.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ExternalDebitTransaction.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Item.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemCategory.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemCategorySupplier.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemPrice.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemQuantity.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemUnit.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Location.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SellOrder.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SellOrderItem.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ShopDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ShopDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ShopDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Supplier.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Unit.cs">
+      <DependentUpon>ShopDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmAddItemCatefory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmAddItemCatefory.Designer.cs">
+      <DependentUpon>frmAddItemCatefory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmViewItemCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmViewItemCategory.Designer.cs">
+      <DependentUpon>frmViewItemCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmEditItemCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmEditItemCategory.Designer.cs">
+      <DependentUpon>frmEditItemCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmItemCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemCategories\frmItemCategories.Designer.cs">
+      <DependentUpon>frmItemCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Locations\frmAddLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Locations\frmAddLocation.Designer.cs">
+      <DependentUpon>frmAddLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Locations\frmEditLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Locations\frmEditLocation.Designer.cs">
+      <DependentUpon>frmEditLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Locations\frmLocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Locations\frmLocations.Designer.cs">
+      <DependentUpon>frmLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Locations\frmViewLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Locations\frmViewLocation.Designer.cs">
+      <DependentUpon>frmViewLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Units\frmAddUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Units\frmAddUnit.Designer.cs">
+      <DependentUpon>frmAddUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Units\frmEditUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Units\frmEditUnit.Designer.cs">
+      <DependentUpon>frmEditUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Units\frmUnits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Units\frmUnits.Designer.cs">
+      <DependentUpon>frmUnits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Units\frmViewUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Units\frmViewUnit.Designer.cs">
+      <DependentUpon>frmViewUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\DBManagement.cs" />
+    <Compile Include="Management\MessageManager.cs" />
+    <Compile Include="Management\OpenForms.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\ItemCategories\frmAddItemCatefory.resx">
+      <DependentUpon>frmAddItemCatefory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemCategories\frmViewItemCategory.resx">
+      <DependentUpon>frmViewItemCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemCategories\frmEditItemCategory.resx">
+      <DependentUpon>frmEditItemCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemCategories\frmItemCategories.resx">
+      <DependentUpon>frmItemCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Locations\frmAddLocation.resx">
+      <DependentUpon>frmAddLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Locations\frmEditLocation.resx">
+      <DependentUpon>frmEditLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Locations\frmLocations.resx">
+      <DependentUpon>frmLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Locations\frmViewLocation.resx">
+      <DependentUpon>frmViewLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Units\frmAddUnit.resx">
+      <DependentUpon>frmAddUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Units\frmEditUnit.resx">
+      <DependentUpon>frmEditUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Units\frmUnits.resx">
+      <DependentUpon>frmUnits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Units\frmViewUnit.resx">
+      <DependentUpon>frmViewUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Data\ShopDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShopDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\ShopDataModel.edmx.diagram">
+      <DependentUpon>ShopDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ShopWinApplication.Data.ItemCategory.datasource" />
+    <None Include="Properties\DataSources\ShopWinApplication.Data.Unit.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\ShopData.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ShopDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopDataModel.edmx</DependentUpon>
+      <LastGenOutput>ShopDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ShopDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopDataModel.edmx</DependentUpon>
+      <LastGenOutput>ShopDataModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ShopData_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ShopData.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

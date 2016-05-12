@@ -1,0 +1,1566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ShopDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuyOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="SupplierID" Type="bigint" Nullable="false" />
+          <Property Name="Discount" Type="money" />
+          <Property Name="PayedAmount" Type="money" />
+        </EntityType>
+        <EntityType Name="BuyOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="bigint" Nullable="false" />
+          <Property Name="BuyOrderID" Type="bigint" Nullable="false" />
+          <Property Name="UnitID" Type="bigint" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Credit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SellOrderID" Type="bigint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreditID" Type="bigint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PayedAmount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Debit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyOrderID" Type="bigint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DebitTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DebitID" Type="bigint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PayedAmount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpenseName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ExpenseDate" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalCredit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreditDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="MobileNo" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalCreditTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExternalCreditID" Type="bigint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PayedAmount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalDebit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DebitDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="MobileNo" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalDebitTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExternalDebitID" Type="bigint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PayedAmount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ItemCategoryID" Type="bigint" Nullable="false" />
+          <Property Name="ProductionDate" Type="datetime" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="ReorderLevel" Type="float" />
+          <Property Name="LocationID" Type="bigint" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="ItemCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemCategorySupplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierID" Type="bigint" Nullable="false" />
+          <Property Name="ItemCategoryID" Type="bigint" Nullable="false" />
+          <Property Name="Rate" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemPrices">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemUnitID" Type="bigint" Nullable="false" />
+          <Property Name="SellPrice" Type="money" Nullable="false" />
+          <Property Name="BuyPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemQuantity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemUnitID" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemUnit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="bigint" Nullable="false" />
+          <Property Name="UnitID" Type="bigint" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" />
+          <Property Name="Discount" Type="money" />
+          <Property Name="PayedAmount" Type="money" />
+        </EntityType>
+        <EntityType Name="SellOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="bigint" Nullable="false" />
+          <Property Name="SellOrderID" Type="bigint" Nullable="false" />
+          <Property Name="UnitID" Type="bigint" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="BaseUnitID" Type="bigint" />
+          <Property Name="Multiplier" Type="int" />
+        </EntityType>
+        <Association Name="FK_BuyOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrder">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrderItem_BuyOrder">
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="1" />
+          <End Role="BuyOrderItem" Type="Self.BuyOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrderItem">
+              <PropertyRef Name="BuyOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrderItem_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="BuyOrderItem" Type="Self.BuyOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrderItem">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrderItem_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="BuyOrderItem" Type="Self.BuyOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrderItem">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_SellOrder">
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="SellOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransaction_Credit">
+          <End Role="Credit" Type="Self.Credit" Multiplicity="1" />
+          <End Role="CreditTransaction" Type="Self.CreditTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Credit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CreditTransaction">
+              <PropertyRef Name="CreditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debit_BuyOrder">
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="1" />
+          <End Role="Debit" Type="Self.Debit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Debit">
+              <PropertyRef Name="BuyOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitTransaction_Debit">
+          <End Role="Debit" Type="Self.Debit" Multiplicity="1" />
+          <End Role="DebitTransaction" Type="Self.DebitTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Debit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DebitTransaction">
+              <PropertyRef Name="DebitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExternalCreditTransaction_ExternalCredit">
+          <End Role="ExternalCredit" Type="Self.ExternalCredit" Multiplicity="1" />
+          <End Role="ExternalCreditTransaction" Type="Self.ExternalCreditTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExternalCredit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExternalCreditTransaction">
+              <PropertyRef Name="ExternalCreditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExternalDebitTransaction_ExternalDebit">
+          <End Role="ExternalDebit" Type="Self.ExternalDebit" Multiplicity="1" />
+          <End Role="ExternalDebitTransaction" Type="Self.ExternalDebitTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExternalDebit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExternalDebitTransaction">
+              <PropertyRef Name="ExternalDebitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemCategory">
+          <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategorySupplier_ItemCategory">
+          <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="1" />
+          <End Role="ItemCategorySupplier" Type="Self.ItemCategorySupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemCategorySupplier">
+              <PropertyRef Name="ItemCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategorySupplier_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="ItemCategorySupplier" Type="Self.ItemCategorySupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemCategorySupplier">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPrices_ItemUnit">
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="1" />
+          <End Role="ItemPrices" Type="Self.ItemPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemUnit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemPrices">
+              <PropertyRef Name="ItemUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemQuantity_ItemUnit">
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="1" />
+          <End Role="ItemQuantity" Type="Self.ItemQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemUnit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemQuantity">
+              <PropertyRef Name="ItemUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemUnit_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemUnit">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemUnit_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemUnit">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrder_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrderItem_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="SellOrderItem" Type="Self.SellOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrderItem">
+              <PropertyRef Name="SellOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrderItem_SellOrder">
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="1" />
+          <End Role="SellOrderItem" Type="Self.SellOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrderItem">
+              <PropertyRef Name="SellOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrderItem_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="SellOrderItem" Type="Self.SellOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrderItem">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Unit_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Unit1" Type="Self.Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Unit1">
+              <PropertyRef Name="BaseUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ShopDataModelStoreContainer">
+          <EntitySet Name="BuyOrder" EntityType="Self.BuyOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuyOrderItem" EntityType="Self.BuyOrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credit" EntityType="Self.Credit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditTransaction" EntityType="Self.CreditTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Debit" EntityType="Self.Debit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebitTransaction" EntityType="Self.DebitTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalCredit" EntityType="Self.ExternalCredit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalCreditTransaction" EntityType="Self.ExternalCreditTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalDebit" EntityType="Self.ExternalDebit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalDebitTransaction" EntityType="Self.ExternalDebitTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemCategory" EntityType="Self.ItemCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemCategorySupplier" EntityType="Self.ItemCategorySupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemPrices" EntityType="Self.ItemPrices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemQuantity" EntityType="Self.ItemQuantity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemUnit" EntityType="Self.ItemUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellOrder" EntityType="Self.SellOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellOrderItem" EntityType="Self.SellOrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BuyOrder_Supplier" Association="Self.FK_BuyOrder_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="BuyOrder" EntitySet="BuyOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrderItem_BuyOrder" Association="Self.FK_BuyOrderItem_BuyOrder">
+            <End Role="BuyOrder" EntitySet="BuyOrder" />
+            <End Role="BuyOrderItem" EntitySet="BuyOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrderItem_Item" Association="Self.FK_BuyOrderItem_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="BuyOrderItem" EntitySet="BuyOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrderItem_Unit" Association="Self.FK_BuyOrderItem_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="BuyOrderItem" EntitySet="BuyOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_SellOrder" Association="Self.FK_Credit_SellOrder">
+            <End Role="SellOrder" EntitySet="SellOrder" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransaction_Credit" Association="Self.FK_CreditTransaction_Credit">
+            <End Role="Credit" EntitySet="Credit" />
+            <End Role="CreditTransaction" EntitySet="CreditTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debit_BuyOrder" Association="Self.FK_Debit_BuyOrder">
+            <End Role="BuyOrder" EntitySet="BuyOrder" />
+            <End Role="Debit" EntitySet="Debit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitTransaction_Debit" Association="Self.FK_DebitTransaction_Debit">
+            <End Role="Debit" EntitySet="Debit" />
+            <End Role="DebitTransaction" EntitySet="DebitTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExternalCreditTransaction_ExternalCredit" Association="Self.FK_ExternalCreditTransaction_ExternalCredit">
+            <End Role="ExternalCredit" EntitySet="ExternalCredit" />
+            <End Role="ExternalCreditTransaction" EntitySet="ExternalCreditTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExternalDebitTransaction_ExternalDebit" Association="Self.FK_ExternalDebitTransaction_ExternalDebit">
+            <End Role="ExternalDebit" EntitySet="ExternalDebit" />
+            <End Role="ExternalDebitTransaction" EntitySet="ExternalDebitTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemCategory" Association="Self.FK_Item_ItemCategory">
+            <End Role="ItemCategory" EntitySet="ItemCategory" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Location" Association="Self.FK_Item_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategorySupplier_ItemCategory" Association="Self.FK_ItemCategorySupplier_ItemCategory">
+            <End Role="ItemCategory" EntitySet="ItemCategory" />
+            <End Role="ItemCategorySupplier" EntitySet="ItemCategorySupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategorySupplier_Supplier" Association="Self.FK_ItemCategorySupplier_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="ItemCategorySupplier" EntitySet="ItemCategorySupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPrices_ItemUnit" Association="Self.FK_ItemPrices_ItemUnit">
+            <End Role="ItemUnit" EntitySet="ItemUnit" />
+            <End Role="ItemPrices" EntitySet="ItemPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemQuantity_ItemUnit" Association="Self.FK_ItemQuantity_ItemUnit">
+            <End Role="ItemUnit" EntitySet="ItemUnit" />
+            <End Role="ItemQuantity" EntitySet="ItemQuantity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemUnit_Item" Association="Self.FK_ItemUnit_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="ItemUnit" EntitySet="ItemUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemUnit_Unit" Association="Self.FK_ItemUnit_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="ItemUnit" EntitySet="ItemUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrder_Customer" Association="Self.FK_SellOrder_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="SellOrder" EntitySet="SellOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrderItem_Item" Association="Self.FK_SellOrderItem_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="SellOrderItem" EntitySet="SellOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrderItem_SellOrder" Association="Self.FK_SellOrderItem_SellOrder">
+            <End Role="SellOrder" EntitySet="SellOrder" />
+            <End Role="SellOrderItem" EntitySet="SellOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrderItem_Unit" Association="Self.FK_SellOrderItem_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="SellOrderItem" EntitySet="SellOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Unit_Unit" Association="Self.FK_Unit_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Unit1" EntitySet="Unit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShopDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BuyOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SupplierID" Type="Int64" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PayedAmount" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_BuyOrder_Supplier" FromRole="BuyOrder" ToRole="Supplier" />
+          <NavigationProperty Name="BuyOrderItems" Relationship="Self.FK_BuyOrderItem_BuyOrder" FromRole="BuyOrder" ToRole="BuyOrderItem" />
+          <NavigationProperty Name="Debits" Relationship="Self.FK_Debit_BuyOrder" FromRole="BuyOrder" ToRole="Debit" />
+        </EntityType>
+        <EntityType Name="BuyOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int64" Nullable="false" />
+          <Property Name="BuyOrderID" Type="Int64" Nullable="false" />
+          <Property Name="UnitID" Type="Int64" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="BuyOrder" Relationship="Self.FK_BuyOrderItem_BuyOrder" FromRole="BuyOrderItem" ToRole="BuyOrder" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_BuyOrderItem_Item" FromRole="BuyOrderItem" ToRole="Item" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_BuyOrderItem_Unit" FromRole="BuyOrderItem" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="Credit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SellOrderID" Type="Int64" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SellOrder" Relationship="Self.FK_Credit_SellOrder" FromRole="Credit" ToRole="SellOrder" />
+          <NavigationProperty Name="CreditTransactions" Relationship="Self.FK_CreditTransaction_Credit" FromRole="Credit" ToRole="CreditTransaction" />
+        </EntityType>
+        <EntityType Name="CreditTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreditID" Type="Int64" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PayedAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Credit" Relationship="Self.FK_CreditTransaction_Credit" FromRole="CreditTransaction" ToRole="Credit" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SellOrders" Relationship="Self.FK_SellOrder_Customer" FromRole="Customer" ToRole="SellOrder" />
+        </EntityType>
+        <EntityType Name="Debit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyOrderID" Type="Int64" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BuyOrder" Relationship="Self.FK_Debit_BuyOrder" FromRole="Debit" ToRole="BuyOrder" />
+          <NavigationProperty Name="DebitTransactions" Relationship="Self.FK_DebitTransaction_Debit" FromRole="Debit" ToRole="DebitTransaction" />
+        </EntityType>
+        <EntityType Name="DebitTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DebitID" Type="Int64" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PayedAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Debit" Relationship="Self.FK_DebitTransaction_Debit" FromRole="DebitTransaction" ToRole="Debit" />
+        </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExpenseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalCredit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreditDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ExternalCreditTransactions" Relationship="Self.FK_ExternalCreditTransaction_ExternalCredit" FromRole="ExternalCredit" ToRole="ExternalCreditTransaction" />
+        </EntityType>
+        <EntityType Name="ExternalCreditTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExternalCreditID" Type="Int64" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PayedAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ExternalCredit" Relationship="Self.FK_ExternalCreditTransaction_ExternalCredit" FromRole="ExternalCreditTransaction" ToRole="ExternalCredit" />
+        </EntityType>
+        <EntityType Name="ExternalDebit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DebitDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ExternalDebitTransactions" Relationship="Self.FK_ExternalDebitTransaction_ExternalDebit" FromRole="ExternalDebit" ToRole="ExternalDebitTransaction" />
+        </EntityType>
+        <EntityType Name="ExternalDebitTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExternalDebitID" Type="Int64" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PayedAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ExternalDebit" Relationship="Self.FK_ExternalDebitTransaction_ExternalDebit" FromRole="ExternalDebitTransaction" ToRole="ExternalDebit" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCategoryID" Type="Int64" Nullable="false" />
+          <Property Name="ProductionDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+          <Property Name="ReorderLevel" Type="Double" />
+          <Property Name="LocationID" Type="Int64" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="BuyOrderItems" Relationship="Self.FK_BuyOrderItem_Item" FromRole="Item" ToRole="BuyOrderItem" />
+          <NavigationProperty Name="ItemCategory" Relationship="Self.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Item_Location" FromRole="Item" ToRole="Location" />
+          <NavigationProperty Name="ItemUnits" Relationship="Self.FK_ItemUnit_Item" FromRole="Item" ToRole="ItemUnit" />
+          <NavigationProperty Name="SellOrderItems" Relationship="Self.FK_SellOrderItem_Item" FromRole="Item" ToRole="SellOrderItem" />
+        </EntityType>
+        <EntityType Name="ItemCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
+          <NavigationProperty Name="ItemCategorySuppliers" Relationship="Self.FK_ItemCategorySupplier_ItemCategory" FromRole="ItemCategory" ToRole="ItemCategorySupplier" />
+        </EntityType>
+        <EntityType Name="ItemCategorySupplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierID" Type="Int64" Nullable="false" />
+          <Property Name="ItemCategoryID" Type="Int64" Nullable="false" />
+          <Property Name="Rate" Type="Int32" />
+          <NavigationProperty Name="ItemCategory" Relationship="Self.FK_ItemCategorySupplier_ItemCategory" FromRole="ItemCategorySupplier" ToRole="ItemCategory" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_ItemCategorySupplier_Supplier" FromRole="ItemCategorySupplier" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="ItemPrice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemUnitID" Type="Int64" Nullable="false" />
+          <Property Name="SellPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BuyPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ItemUnit" Relationship="Self.FK_ItemPrices_ItemUnit" FromRole="ItemPrices" ToRole="ItemUnit" />
+        </EntityType>
+        <EntityType Name="ItemQuantity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemUnitID" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ItemUnit" Relationship="Self.FK_ItemQuantity_ItemUnit" FromRole="ItemQuantity" ToRole="ItemUnit" />
+        </EntityType>
+        <EntityType Name="ItemUnit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int64" Nullable="false" />
+          <Property Name="UnitID" Type="Int64" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_ItemUnit_Item" FromRole="ItemUnit" ToRole="Item" />
+          <NavigationProperty Name="ItemPrices" Relationship="Self.FK_ItemPrices_ItemUnit" FromRole="ItemUnit" ToRole="ItemPrices" />
+          <NavigationProperty Name="ItemQuantities" Relationship="Self.FK_ItemQuantity_ItemUnit" FromRole="ItemUnit" ToRole="ItemQuantity" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_ItemUnit_Unit" FromRole="ItemUnit" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_Location" FromRole="Location" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="SellOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerID" Type="Int64" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PayedAmount" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Credits" Relationship="Self.FK_Credit_SellOrder" FromRole="SellOrder" ToRole="Credit" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_SellOrder_Customer" FromRole="SellOrder" ToRole="Customer" />
+          <NavigationProperty Name="SellOrderItems" Relationship="Self.FK_SellOrderItem_SellOrder" FromRole="SellOrder" ToRole="SellOrderItem" />
+        </EntityType>
+        <EntityType Name="SellOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int64" Nullable="false" />
+          <Property Name="SellOrderID" Type="Int64" Nullable="false" />
+          <Property Name="UnitID" Type="Int64" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_SellOrderItem_Item" FromRole="SellOrderItem" ToRole="Item" />
+          <NavigationProperty Name="SellOrder" Relationship="Self.FK_SellOrderItem_SellOrder" FromRole="SellOrderItem" ToRole="SellOrder" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_SellOrderItem_Unit" FromRole="SellOrderItem" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BuyOrders" Relationship="Self.FK_BuyOrder_Supplier" FromRole="Supplier" ToRole="BuyOrder" />
+          <NavigationProperty Name="ItemCategorySuppliers" Relationship="Self.FK_ItemCategorySupplier_Supplier" FromRole="Supplier" ToRole="ItemCategorySupplier" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BaseUnitID" Type="Int64" />
+          <Property Name="Multiplier" Type="Int32" />
+          <NavigationProperty Name="BuyOrderItems" Relationship="Self.FK_BuyOrderItem_Unit" FromRole="Unit" ToRole="BuyOrderItem" />
+          <NavigationProperty Name="ItemUnits" Relationship="Self.FK_ItemUnit_Unit" FromRole="Unit" ToRole="ItemUnit" />
+          <NavigationProperty Name="SellOrderItems" Relationship="Self.FK_SellOrderItem_Unit" FromRole="Unit" ToRole="SellOrderItem" />
+          <NavigationProperty Name="Units" Relationship="Self.FK_Unit_Unit" FromRole="Unit" ToRole="Unit1" />
+          <NavigationProperty Name="BaseUnit" Relationship="Self.FK_Unit_Unit" FromRole="Unit1" ToRole="Unit" />
+        </EntityType>
+        <Association Name="FK_BuyOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrder">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrderItem_BuyOrder">
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="1" />
+          <End Role="BuyOrderItem" Type="Self.BuyOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrderItem">
+              <PropertyRef Name="BuyOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debit_BuyOrder">
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="1" />
+          <End Role="Debit" Type="Self.Debit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Debit">
+              <PropertyRef Name="BuyOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrderItem_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="BuyOrderItem" Type="Self.BuyOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrderItem">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrderItem_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="BuyOrderItem" Type="Self.BuyOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BuyOrderItem">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_SellOrder">
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="SellOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransaction_Credit">
+          <End Role="Credit" Type="Self.Credit" Multiplicity="1" />
+          <End Role="CreditTransaction" Type="Self.CreditTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Credit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CreditTransaction">
+              <PropertyRef Name="CreditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrder_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitTransaction_Debit">
+          <End Role="Debit" Type="Self.Debit" Multiplicity="1" />
+          <End Role="DebitTransaction" Type="Self.DebitTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Debit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DebitTransaction">
+              <PropertyRef Name="DebitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExternalCreditTransaction_ExternalCredit">
+          <End Role="ExternalCredit" Type="Self.ExternalCredit" Multiplicity="1" />
+          <End Role="ExternalCreditTransaction" Type="Self.ExternalCreditTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExternalCredit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExternalCreditTransaction">
+              <PropertyRef Name="ExternalCreditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExternalDebitTransaction_ExternalDebit">
+          <End Role="ExternalDebit" Type="Self.ExternalDebit" Multiplicity="1" />
+          <End Role="ExternalDebitTransaction" Type="Self.ExternalDebitTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExternalDebit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExternalDebitTransaction">
+              <PropertyRef Name="ExternalDebitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemCategory">
+          <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemUnit_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemUnit">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrderItem_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="SellOrderItem" Type="Self.SellOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrderItem">
+              <PropertyRef Name="SellOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategorySupplier_ItemCategory">
+          <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="1" />
+          <End Role="ItemCategorySupplier" Type="Self.ItemCategorySupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemCategorySupplier">
+              <PropertyRef Name="ItemCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategorySupplier_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="ItemCategorySupplier" Type="Self.ItemCategorySupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemCategorySupplier">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPrices_ItemUnit">
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="1" />
+          <End Role="ItemPrices" Type="Self.ItemPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemUnit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemPrices">
+              <PropertyRef Name="ItemUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemQuantity_ItemUnit">
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="1" />
+          <End Role="ItemQuantity" Type="Self.ItemQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemUnit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemQuantity">
+              <PropertyRef Name="ItemUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemUnit_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemUnit">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrderItem_SellOrder">
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="1" />
+          <End Role="SellOrderItem" Type="Self.SellOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrderItem">
+              <PropertyRef Name="SellOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrderItem_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="SellOrderItem" Type="Self.SellOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SellOrderItem">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Unit_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Unit1" Type="Self.Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Unit1">
+              <PropertyRef Name="BaseUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ShopDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuyOrders" EntityType="Self.BuyOrder" />
+          <EntitySet Name="BuyOrderItems" EntityType="Self.BuyOrderItem" />
+          <EntitySet Name="Credits" EntityType="Self.Credit" />
+          <EntitySet Name="CreditTransactions" EntityType="Self.CreditTransaction" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Debits" EntityType="Self.Debit" />
+          <EntitySet Name="DebitTransactions" EntityType="Self.DebitTransaction" />
+          <EntitySet Name="Expenses" EntityType="Self.Expense" />
+          <EntitySet Name="ExternalCredits" EntityType="Self.ExternalCredit" />
+          <EntitySet Name="ExternalCreditTransactions" EntityType="Self.ExternalCreditTransaction" />
+          <EntitySet Name="ExternalDebits" EntityType="Self.ExternalDebit" />
+          <EntitySet Name="ExternalDebitTransactions" EntityType="Self.ExternalDebitTransaction" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="ItemCategories" EntityType="Self.ItemCategory" />
+          <EntitySet Name="ItemCategorySuppliers" EntityType="Self.ItemCategorySupplier" />
+          <EntitySet Name="ItemPrices" EntityType="Self.ItemPrice" />
+          <EntitySet Name="ItemQuantities" EntityType="Self.ItemQuantity" />
+          <EntitySet Name="ItemUnits" EntityType="Self.ItemUnit" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="SellOrders" EntityType="Self.SellOrder" />
+          <EntitySet Name="SellOrderItems" EntityType="Self.SellOrderItem" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <AssociationSet Name="FK_BuyOrder_Supplier" Association="Self.FK_BuyOrder_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="BuyOrder" EntitySet="BuyOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrderItem_BuyOrder" Association="Self.FK_BuyOrderItem_BuyOrder">
+            <End Role="BuyOrder" EntitySet="BuyOrders" />
+            <End Role="BuyOrderItem" EntitySet="BuyOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debit_BuyOrder" Association="Self.FK_Debit_BuyOrder">
+            <End Role="BuyOrder" EntitySet="BuyOrders" />
+            <End Role="Debit" EntitySet="Debits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrderItem_Item" Association="Self.FK_BuyOrderItem_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="BuyOrderItem" EntitySet="BuyOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrderItem_Unit" Association="Self.FK_BuyOrderItem_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="BuyOrderItem" EntitySet="BuyOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_SellOrder" Association="Self.FK_Credit_SellOrder">
+            <End Role="SellOrder" EntitySet="SellOrders" />
+            <End Role="Credit" EntitySet="Credits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransaction_Credit" Association="Self.FK_CreditTransaction_Credit">
+            <End Role="Credit" EntitySet="Credits" />
+            <End Role="CreditTransaction" EntitySet="CreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrder_Customer" Association="Self.FK_SellOrder_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="SellOrder" EntitySet="SellOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitTransaction_Debit" Association="Self.FK_DebitTransaction_Debit">
+            <End Role="Debit" EntitySet="Debits" />
+            <End Role="DebitTransaction" EntitySet="DebitTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExternalCreditTransaction_ExternalCredit" Association="Self.FK_ExternalCreditTransaction_ExternalCredit">
+            <End Role="ExternalCredit" EntitySet="ExternalCredits" />
+            <End Role="ExternalCreditTransaction" EntitySet="ExternalCreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExternalDebitTransaction_ExternalDebit" Association="Self.FK_ExternalDebitTransaction_ExternalDebit">
+            <End Role="ExternalDebit" EntitySet="ExternalDebits" />
+            <End Role="ExternalDebitTransaction" EntitySet="ExternalDebitTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemCategory" Association="Self.FK_Item_ItemCategory">
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Location" Association="Self.FK_Item_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemUnit_Item" Association="Self.FK_ItemUnit_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemUnit" EntitySet="ItemUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrderItem_Item" Association="Self.FK_SellOrderItem_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="SellOrderItem" EntitySet="SellOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategorySupplier_ItemCategory" Association="Self.FK_ItemCategorySupplier_ItemCategory">
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+            <End Role="ItemCategorySupplier" EntitySet="ItemCategorySuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategorySupplier_Supplier" Association="Self.FK_ItemCategorySupplier_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="ItemCategorySupplier" EntitySet="ItemCategorySuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPrices_ItemUnit" Association="Self.FK_ItemPrices_ItemUnit">
+            <End Role="ItemUnit" EntitySet="ItemUnits" />
+            <End Role="ItemPrices" EntitySet="ItemPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemQuantity_ItemUnit" Association="Self.FK_ItemQuantity_ItemUnit">
+            <End Role="ItemUnit" EntitySet="ItemUnits" />
+            <End Role="ItemQuantity" EntitySet="ItemQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemUnit_Unit" Association="Self.FK_ItemUnit_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ItemUnit" EntitySet="ItemUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrderItem_SellOrder" Association="Self.FK_SellOrderItem_SellOrder">
+            <End Role="SellOrder" EntitySet="SellOrders" />
+            <End Role="SellOrderItem" EntitySet="SellOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrderItem_Unit" Association="Self.FK_SellOrderItem_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="SellOrderItem" EntitySet="SellOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Unit_Unit" Association="Self.FK_Unit_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Unit1" EntitySet="Units" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ShopDataModelStoreContainer" CdmEntityContainer="ShopDataEntities">
+          <EntitySetMapping Name="BuyOrders">
+            <EntityTypeMapping TypeName="ShopDataModel.BuyOrder">
+              <MappingFragment StoreEntitySet="BuyOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PayedAmount" ColumnName="PayedAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuyOrderItems">
+            <EntityTypeMapping TypeName="ShopDataModel.BuyOrderItem">
+              <MappingFragment StoreEntitySet="BuyOrderItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="BuyOrderID" ColumnName="BuyOrderID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Credits">
+            <EntityTypeMapping TypeName="ShopDataModel.Credit">
+              <MappingFragment StoreEntitySet="Credit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SellOrderID" ColumnName="SellOrderID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditTransactions">
+            <EntityTypeMapping TypeName="ShopDataModel.CreditTransaction">
+              <MappingFragment StoreEntitySet="CreditTransaction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CreditID" ColumnName="CreditID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PayedAmount" ColumnName="PayedAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ShopDataModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Debits">
+            <EntityTypeMapping TypeName="ShopDataModel.Debit">
+              <MappingFragment StoreEntitySet="Debit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BuyOrderID" ColumnName="BuyOrderID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DebitTransactions">
+            <EntityTypeMapping TypeName="ShopDataModel.DebitTransaction">
+              <MappingFragment StoreEntitySet="DebitTransaction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DebitID" ColumnName="DebitID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PayedAmount" ColumnName="PayedAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="ShopDataModel.Expense">
+              <MappingFragment StoreEntitySet="Expense">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ExpenseName" ColumnName="ExpenseName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExpenseDate" ColumnName="ExpenseDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalCredits">
+            <EntityTypeMapping TypeName="ShopDataModel.ExternalCredit">
+              <MappingFragment StoreEntitySet="ExternalCredit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CreditDate" ColumnName="CreditDate" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalCreditTransactions">
+            <EntityTypeMapping TypeName="ShopDataModel.ExternalCreditTransaction">
+              <MappingFragment StoreEntitySet="ExternalCreditTransaction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ExternalCreditID" ColumnName="ExternalCreditID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PayedAmount" ColumnName="PayedAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalDebits">
+            <EntityTypeMapping TypeName="ShopDataModel.ExternalDebit">
+              <MappingFragment StoreEntitySet="ExternalDebit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DebitDate" ColumnName="DebitDate" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalDebitTransactions">
+            <EntityTypeMapping TypeName="ShopDataModel.ExternalDebitTransaction">
+              <MappingFragment StoreEntitySet="ExternalDebitTransaction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ExternalDebitID" ColumnName="ExternalDebitID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PayedAmount" ColumnName="PayedAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="ShopDataModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ItemCategoryID" ColumnName="ItemCategoryID" />
+                <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemCategories">
+            <EntityTypeMapping TypeName="ShopDataModel.ItemCategory">
+              <MappingFragment StoreEntitySet="ItemCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemCategorySuppliers">
+            <EntityTypeMapping TypeName="ShopDataModel.ItemCategorySupplier">
+              <MappingFragment StoreEntitySet="ItemCategorySupplier">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="ItemCategoryID" ColumnName="ItemCategoryID" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemPrices">
+            <EntityTypeMapping TypeName="ShopDataModel.ItemPrice">
+              <MappingFragment StoreEntitySet="ItemPrices">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemUnitID" ColumnName="ItemUnitID" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemQuantities">
+            <EntityTypeMapping TypeName="ShopDataModel.ItemQuantity">
+              <MappingFragment StoreEntitySet="ItemQuantity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemUnitID" ColumnName="ItemUnitID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemUnits">
+            <EntityTypeMapping TypeName="ShopDataModel.ItemUnit">
+              <MappingFragment StoreEntitySet="ItemUnit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="ShopDataModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellOrders">
+            <EntityTypeMapping TypeName="ShopDataModel.SellOrder">
+              <MappingFragment StoreEntitySet="SellOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PayedAmount" ColumnName="PayedAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellOrderItems">
+            <EntityTypeMapping TypeName="ShopDataModel.SellOrderItem">
+              <MappingFragment StoreEntitySet="SellOrderItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SellOrderID" ColumnName="SellOrderID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="ShopDataModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="ShopDataModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BaseUnitID" ColumnName="BaseUnitID" />
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

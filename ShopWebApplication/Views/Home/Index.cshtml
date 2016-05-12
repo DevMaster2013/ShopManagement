@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "الصفحة الرئيسية";
+}
+
+<h2>الصفحة الرئيسية</h2>
+<hr />
+<div class="container" dir="rtl" style="background-color:#c3dadb;border: 1px solid #c0c0c0">
+    <h3>
+        هذا الجزء يحتوى على جميع البيانات الرئيسية الثابتة للمحل 
+        مثل (تصنيفات البضائع ، وحدات البضائع ، أماكن الأرفف).       
+    </h3>
+    <ul style="font-size:large">
+        <li>هنا ، قم بإدارة  
+            @Html.ActionLink("تصنيفات البضائع بالمحل", "Index", "ItemCategories")
+        </li>
+        <li>
+            هنا ، قم بإدارة 
+            @Html.ActionLink("وحدات البضائع بالمحل", "Index", "Unit")
+        </li>
+        <li>
+            هنا ، قم بإدارة 
+            @Html.ActionLink("أماكن البضائع بالمحل", "Index", "Location")
+        </li>
+    </ul>
+</div>
