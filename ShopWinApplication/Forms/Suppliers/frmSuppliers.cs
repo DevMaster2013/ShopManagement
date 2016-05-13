@@ -10,43 +10,43 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ShopWinApplication.Forms.ItemCategories
+namespace ShopWinApplication.Forms.Suppliers
 {
-    public partial class frmItemCategories : Form
+    public partial class frmSuppliers : Form
     {
-        public frmItemCategories()
+        public frmSuppliers()
         {
             InitializeComponent();
             OpenForms.AddOpenedForm(this);
         }
 
-        private void frmItemCategories_Load(object sender, EventArgs e)
+        private void frmSuppliers_Load(object sender, EventArgs e)
         {
-            itemCategoryBindingSource.DataSource = DBManagement.GetDB().ItemCategories.ToList();
-            if (itemCategoryBindingSource.List.Count <= 0)
+            supplierBindingSource.DataSource = DBManagement.GetDB().Suppliers.ToList();
+            if (supplierBindingSource.List.Count <= 0)
             {
-                dtGridItemCategories.Visible = false;
+                dtGridSuppliers.Visible = false;
                 lblError.Visible = true;
             }
             else
             {
-                dtGridItemCategories.Visible = true;
+                dtGridSuppliers.Visible = true;
                 lblError.Visible = false;
             }
         }
 
-        private void linkAddNewItemCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkAddNewSupplier_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddItemCatefory frm = new frmAddItemCatefory();
+            frmAddSupplier frm = new frmAddSupplier();
             frm.Show();
         }
 
-        private void frmItemCategories_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmSuppliers_FormClosed(object sender, FormClosedEventArgs e)
         {
             OpenForms.RemoveForm(this);
         }
 
-        private void dtGridItemCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dtGridLocations_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewLinkColumn && e.RowIndex >= 0)
@@ -68,15 +68,15 @@ namespace ShopWinApplication.Forms.ItemCategories
 
         private void HandleEditButton(int rowIndex)
         {
-            ItemCategory itCat = itemCategoryBindingSource.List[rowIndex] as ItemCategory;
-            frmEditItemCategory frm = new frmEditItemCategory(itCat);
+            Supplier sub = supplierBindingSource.List[rowIndex] as Supplier;
+            frmEditSupplier frm = new frmEditSupplier(sub);
             frm.Show();
         }
 
         private void HandleDetailsButton(int rowIndex)
         {
-            ItemCategory itCat = itemCategoryBindingSource.List[rowIndex] as ItemCategory;
-            frmViewItemCategory frm = new frmViewItemCategory(itCat);
+            Supplier sub = supplierBindingSource.List[rowIndex] as Supplier;
+            frmViewSupplier frm = new frmViewSupplier(sub);
             frm.Show();
         }
 
@@ -84,13 +84,13 @@ namespace ShopWinApplication.Forms.ItemCategories
         {
             if (MessageManager.YesNoMessage("هل تريد مسح هذا السجل؟"))
             {
-                ItemCategory itCat = itemCategoryBindingSource.List[rowIndex] as ItemCategory;
-                DBManagement.GetDB().ItemCategorySuppliers.RemoveRange(itCat.ItemCategorySuppliers);
-                DBManagement.GetDB().ItemCategories.Remove(itCat);
+                Supplier sub = supplierBindingSource.List[rowIndex] as Supplier;
+                DBManagement.GetDB().ItemCategorySuppliers.RemoveRange(sub.ItemCategorySuppliers);
+                DBManagement.GetDB().Suppliers.Remove(sub);
                 if (DBManagement.GetDB().SaveChanges() > 0)
                 {
                     MessageManager.SaveDataSuccessMessage("لقد تم مسح البيانات بنجاح");
-                    itemCategoryBindingSource.DataSource = DBManagement.GetDB().ItemCategories.ToList();
+                    supplierBindingSource.DataSource = DBManagement.GetDB().Suppliers.ToList();
                 }
                 else
                     MessageManager.SaveDataFailureMessage("لم يتم مسح البانات");

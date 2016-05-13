@@ -35,15 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFormTitle = new System.Windows.Forms.Label();
             this.dtGridLocations = new System.Windows.Forms.DataGridView();
+            this.locationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.linkAddNewLocation = new System.Windows.Forms.LinkLabel();
+            this.lblError = new System.Windows.Forms.Label();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Details = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Delete = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.locationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.linkAddNewLocation = new System.Windows.Forms.LinkLabel();
-            this.lblError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridLocations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +91,32 @@
             this.dtGridLocations.TabIndex = 1;
             this.dtGridLocations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridLocations_CellContentClick);
             // 
+            // locationBindingSource
+            // 
+            this.locationBindingSource.DataSource = typeof(ShopWinApplication.Data.Location);
+            // 
+            // linkAddNewLocation
+            // 
+            this.linkAddNewLocation.AutoSize = true;
+            this.linkAddNewLocation.Location = new System.Drawing.Point(14, 36);
+            this.linkAddNewLocation.Name = "linkAddNewLocation";
+            this.linkAddNewLocation.Size = new System.Drawing.Size(104, 17);
+            this.linkAddNewLocation.TabIndex = 2;
+            this.linkAddNewLocation.TabStop = true;
+            this.linkAddNewLocation.Text = "إضافة مكان جديد";
+            this.linkAddNewLocation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddNewLocation_LinkClicked);
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(147, 36);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(383, 17);
+            this.lblError.TabIndex = 4;
+            this.lblError.Text = "لا توجد أمكان الآن فى المحل ، قم بإضافة أماكن جديدة لعرضها هنا";
+            this.lblError.Visible = false;
+            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -126,8 +152,10 @@
             // 
             // Details
             // 
+            this.Details.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.NullValue = "عرض";
             this.Details.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Details.FillWeight = 10F;
             this.Details.HeaderText = "";
             this.Details.Name = "Details";
             this.Details.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -142,32 +170,6 @@
             this.Delete.HeaderText = "";
             this.Delete.Name = "Delete";
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // locationBindingSource
-            // 
-            this.locationBindingSource.DataSource = typeof(ShopWinApplication.Data.ItemCategory);
-            // 
-            // linkAddNewLocation
-            // 
-            this.linkAddNewLocation.AutoSize = true;
-            this.linkAddNewLocation.Location = new System.Drawing.Point(14, 36);
-            this.linkAddNewLocation.Name = "linkAddNewLocation";
-            this.linkAddNewLocation.Size = new System.Drawing.Size(104, 17);
-            this.linkAddNewLocation.TabIndex = 2;
-            this.linkAddNewLocation.TabStop = true;
-            this.linkAddNewLocation.Text = "إضافة مكان جديد";
-            this.linkAddNewLocation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddNewLocation_LinkClicked);
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(147, 36);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(383, 17);
-            this.lblError.TabIndex = 4;
-            this.lblError.Text = "لا توجد أمكان الآن فى المحل ، قم بإضافة أماكن جديدة لعرضها هنا";
-            this.lblError.Visible = false;
             // 
             // frmLocations
             // 
@@ -202,12 +204,12 @@
         private System.Windows.Forms.DataGridView dtGridLocations;
         private System.Windows.Forms.BindingSource locationBindingSource;
         private System.Windows.Forms.LinkLabel linkAddNewLocation;
+        private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewLinkColumn Edit;
         private System.Windows.Forms.DataGridViewLinkColumn Details;
         private System.Windows.Forms.DataGridViewLinkColumn Delete;
-        private System.Windows.Forms.Label lblError;
     }
 }

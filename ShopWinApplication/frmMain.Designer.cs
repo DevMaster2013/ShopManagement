@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.grbEssentialData = new System.Windows.Forms.GroupBox();
+            this.linkItems = new System.Windows.Forms.LinkLabel();
+            this.linkSuppliers = new System.Windows.Forms.LinkLabel();
             this.linkUnits = new System.Windows.Forms.LinkLabel();
             this.linkLocations = new System.Windows.Forms.LinkLabel();
             this.linkItemCategories = new System.Windows.Forms.LinkLabel();
             this.lblEssentialDataDescription = new System.Windows.Forms.Label();
-            this.linkSuppliers = new System.Windows.Forms.LinkLabel();
-            this.linkItems = new System.Windows.Forms.LinkLabel();
             this.grbEssentialData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,28 @@
             this.grbEssentialData.TabIndex = 1;
             this.grbEssentialData.TabStop = false;
             this.grbEssentialData.Text = "البيانات الأساسية للمحل";
+            // 
+            // linkItems
+            // 
+            this.linkItems.AutoSize = true;
+            this.linkItems.Location = new System.Drawing.Point(110, 129);
+            this.linkItems.Name = "linkItems";
+            this.linkItems.Size = new System.Drawing.Size(182, 17);
+            this.linkItems.TabIndex = 1;
+            this.linkItems.TabStop = true;
+            this.linkItems.Text = "قائمة البضائع الموجودة بالمحل";
+            this.linkItems.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkItems_LinkClicked);
+            // 
+            // linkSuppliers
+            // 
+            this.linkSuppliers.AutoSize = true;
+            this.linkSuppliers.Location = new System.Drawing.Point(110, 112);
+            this.linkSuppliers.Name = "linkSuppliers";
+            this.linkSuppliers.Size = new System.Drawing.Size(182, 17);
+            this.linkSuppliers.TabIndex = 1;
+            this.linkSuppliers.TabStop = true;
+            this.linkSuppliers.Text = "قائمة الموردين للبضائع بالمحل";
+            this.linkSuppliers.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSuppliers_LinkClicked);
             // 
             // linkUnits
             // 
@@ -98,28 +120,6 @@
             this.lblEssentialDataDescription.TabIndex = 0;
             this.lblEssentialDataDescription.Text = "البيانات الأساسية للمحل هى البيانات التى لا يتم تعديلها الا قليلا\r\nحيث يتم ادخاله" +
     "ا مرة واحدة فقط فى بداية التعامل مع البرنامج\r\nمثل (التصنيفات ، الأماكن ...)";
-            // 
-            // linkSuppliers
-            // 
-            this.linkSuppliers.AutoSize = true;
-            this.linkSuppliers.Location = new System.Drawing.Point(110, 112);
-            this.linkSuppliers.Name = "linkSuppliers";
-            this.linkSuppliers.Size = new System.Drawing.Size(182, 17);
-            this.linkSuppliers.TabIndex = 1;
-            this.linkSuppliers.TabStop = true;
-            this.linkSuppliers.Text = "قائمة الموردين للبضائع بالمحل";
-            this.linkSuppliers.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkUnits_LinkClicked);
-            // 
-            // linkItems
-            // 
-            this.linkItems.AutoSize = true;
-            this.linkItems.Location = new System.Drawing.Point(110, 129);
-            this.linkItems.Name = "linkItems";
-            this.linkItems.Size = new System.Drawing.Size(182, 17);
-            this.linkItems.TabIndex = 1;
-            this.linkItems.TabStop = true;
-            this.linkItems.Text = "قائمة البضائع الموجودة بالمحل";
-            this.linkItems.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkUnits_LinkClicked);
             // 
             // frmMain
             // 

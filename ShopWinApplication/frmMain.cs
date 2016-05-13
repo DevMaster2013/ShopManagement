@@ -42,5 +42,17 @@ namespace ShopWinApplication
             Forms.Units.frmUnits frm = new Forms.Units.frmUnits();
             frm.Show();
         }
+
+        private void linkSuppliers_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Forms.Suppliers.frmSuppliers frm = new Forms.Suppliers.frmSuppliers();
+            frm.Show();
+        }
+
+        private void linkItems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //Forms.Items.frmItems frm = new Forms.Items.frmItems();
+            //frm.Show();
+        }
     }
 }

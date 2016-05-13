@@ -157,6 +157,7 @@
     <Compile Include="Data\Unit.cs">
       <DependentUpon>ShopDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ViewModels\ItemCategoryForSupplier.cs" />
     <Compile Include="Forms\ItemCategories\frmAddItemCatefory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +205,30 @@
     </Compile>
     <Compile Include="Forms\Locations\frmViewLocation.Designer.cs">
       <DependentUpon>frmViewLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmAddSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmAddSupplier.Designer.cs">
+      <DependentUpon>frmAddSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmEditSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmEditSupplier.Designer.cs">
+      <DependentUpon>frmEditSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmSuppliers.Designer.cs">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmViewSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Suppliers\frmViewSupplier.Designer.cs">
+      <DependentUpon>frmViewSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Units\frmAddUnit.cs">
       <SubType>Form</SubType>
@@ -264,6 +289,18 @@
     <EmbeddedResource Include="Forms\Locations\frmViewLocation.resx">
       <DependentUpon>frmViewLocation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Suppliers\frmAddSupplier.resx">
+      <DependentUpon>frmAddSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Suppliers\frmEditSupplier.resx">
+      <DependentUpon>frmEditSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Suppliers\frmSuppliers.resx">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Suppliers\frmViewSupplier.resx">
+      <DependentUpon>frmViewSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Units\frmAddUnit.resx">
       <DependentUpon>frmAddUnit.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,7 +335,10 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ShopWinApplication.Data.ItemCategory.datasource" />
+    <None Include="Properties\DataSources\ShopWinApplication.Data.Location.datasource" />
+    <None Include="Properties\DataSources\ShopWinApplication.Data.Supplier.datasource" />
     <None Include="Properties\DataSources\ShopWinApplication.Data.Unit.datasource" />
+    <None Include="Properties\DataSources\ShopWinApplication.Data.ViewModels.ItemCategoryForSupplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -313,9 +353,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\ShopData.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\ShopDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShopDataModel.edmx</DependentUpon>
@@ -325,10 +362,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShopDataModel.edmx</DependentUpon>
       <LastGenOutput>ShopDataModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\ShopData_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>ShopData.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +374,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

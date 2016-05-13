@@ -35,15 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFormTitle = new System.Windows.Forms.Label();
             this.dtGridItemCategories = new System.Windows.Forms.DataGridView();
+            this.itemCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.linkAddNewItemCategory = new System.Windows.Forms.LinkLabel();
+            this.lblError = new System.Windows.Forms.Label();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Details = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Delete = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.itemCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.linkAddNewItemCategory = new System.Windows.Forms.LinkLabel();
-            this.lblError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridItemCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemCategoryBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +91,32 @@
             this.dtGridItemCategories.TabIndex = 1;
             this.dtGridItemCategories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridItemCategories_CellContentClick);
             // 
+            // itemCategoryBindingSource
+            // 
+            this.itemCategoryBindingSource.DataSource = typeof(ShopWinApplication.Data.ItemCategory);
+            // 
+            // linkAddNewItemCategory
+            // 
+            this.linkAddNewItemCategory.AutoSize = true;
+            this.linkAddNewItemCategory.Location = new System.Drawing.Point(14, 36);
+            this.linkAddNewItemCategory.Name = "linkAddNewItemCategory";
+            this.linkAddNewItemCategory.Size = new System.Drawing.Size(115, 17);
+            this.linkAddNewItemCategory.TabIndex = 2;
+            this.linkAddNewItemCategory.TabStop = true;
+            this.linkAddNewItemCategory.Text = "إضافة تصنيف جديد";
+            this.linkAddNewItemCategory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddNewItemCategory_LinkClicked);
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(149, 36);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(415, 17);
+            this.lblError.TabIndex = 3;
+            this.lblError.Text = "لا توجد تصنيفات الآن فى المحل ، قم بإضافة تصنيفات جديدة لعرضها هنا";
+            this.lblError.Visible = false;
+            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -126,8 +152,10 @@
             // 
             // Details
             // 
+            this.Details.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.NullValue = "عرض";
             this.Details.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Details.FillWeight = 10F;
             this.Details.HeaderText = "";
             this.Details.Name = "Details";
             this.Details.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -142,32 +170,6 @@
             this.Delete.HeaderText = "";
             this.Delete.Name = "Delete";
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // itemCategoryBindingSource
-            // 
-            this.itemCategoryBindingSource.DataSource = typeof(ShopWinApplication.Data.ItemCategory);
-            // 
-            // linkAddNewItemCategory
-            // 
-            this.linkAddNewItemCategory.AutoSize = true;
-            this.linkAddNewItemCategory.Location = new System.Drawing.Point(14, 36);
-            this.linkAddNewItemCategory.Name = "linkAddNewItemCategory";
-            this.linkAddNewItemCategory.Size = new System.Drawing.Size(115, 17);
-            this.linkAddNewItemCategory.TabIndex = 2;
-            this.linkAddNewItemCategory.TabStop = true;
-            this.linkAddNewItemCategory.Text = "إضافة تصنيف جديد";
-            this.linkAddNewItemCategory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddNewItemCategory_LinkClicked);
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(149, 36);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(415, 17);
-            this.lblError.TabIndex = 3;
-            this.lblError.Text = "لا توجد تصنيفات الآن فى المحل ، قم بإضافة تصنيفات جديدة لعرضها هنا";
-            this.lblError.Visible = false;
             // 
             // frmItemCategories
             // 
@@ -202,12 +204,12 @@
         private System.Windows.Forms.DataGridView dtGridItemCategories;
         private System.Windows.Forms.BindingSource itemCategoryBindingSource;
         private System.Windows.Forms.LinkLabel linkAddNewItemCategory;
+        private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewLinkColumn Edit;
         private System.Windows.Forms.DataGridViewLinkColumn Details;
         private System.Windows.Forms.DataGridViewLinkColumn Delete;
-        private System.Windows.Forms.Label lblError;
     }
 }
