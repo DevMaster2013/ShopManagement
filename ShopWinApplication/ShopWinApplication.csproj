@@ -182,6 +182,24 @@
     <Compile Include="Forms\ItemCategories\frmItemCategories.Designer.cs">
       <DependentUpon>frmItemCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Items\frmEditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Items\frmEditItem.Designer.cs">
+      <DependentUpon>frmEditItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Items\frmAddItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Items\frmAddItem.Designer.cs">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Items\frmItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Items\frmItems.Designer.cs">
+      <DependentUpon>frmItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Locations\frmAddLocation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +294,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemCategories\frmItemCategories.resx">
       <DependentUpon>frmItemCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Items\frmEditItem.resx">
+      <DependentUpon>frmEditItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Items\frmAddItem.resx">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Items\frmItems.resx">
+      <DependentUpon>frmItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Locations\frmAddLocation.resx">
       <DependentUpon>frmAddLocation.cs</DependentUpon>

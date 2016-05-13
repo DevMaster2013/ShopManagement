@@ -51,8 +51,8 @@ namespace ShopWinApplication
 
         private void linkItems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //Forms.Items.frmItems frm = new Forms.Items.frmItems();
-            //frm.Show();
+            Forms.Items.frmItems frm = new Forms.Items.frmItems();
+            frm.Show();
         }
     }
 }

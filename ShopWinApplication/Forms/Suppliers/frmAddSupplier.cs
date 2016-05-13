@@ -88,7 +88,7 @@ namespace ShopWinApplication.Forms.Suppliers
             return true;
         }
 
-        private void grbSupplierData_Enter(object sender, EventArgs e)
+        private void frmAddSupplier_Load(object sender, EventArgs e)
         {
             itemCategoryForSupplierBindingSource.DataSource = DBManagement.GetItemCategoriesForSuppliers(-1);
         }
