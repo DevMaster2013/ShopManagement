@@ -25,6 +25,14 @@ namespace ShopWinApplication.Management
             return returnedList;
         }
 
+        public static List<Location> GetLocationsForItem()
+        {
+            List<Location> returnedList = (from u in GetDB().Locations
+                                       select u).ToList();
+            returnedList.Insert(0, new Location() { ID = -1, Name = "<إختر مكان الصنف>" });
+            return returnedList;
+        }
+
         public static List<ItemCategoryForSupplier> GetItemCategoriesForSuppliers(long ID, bool includeAll = false)
         {
             if (ID == -1)

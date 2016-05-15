@@ -76,8 +76,8 @@ namespace ShopWinApplication.Forms.Items
         private void HandleDetailsButton(int rowIndex)
         {
             Item item = itemBindingSource.List[rowIndex] as Item;
-            //frmViewItem frm = new frmViewItem(item);
-            //frm.Show();
+            frmViewItem frm = new frmViewItem(item);
+            frm.Show();
         }
 
         private void HandleDeleteButton(int rowIndex)

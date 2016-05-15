@@ -51,6 +51,11 @@ namespace ShopWinApplication.Forms.Units
                 unit.BaseUnitID = comboBaseUnit.SelectedValue as long?;
                 unit.Multiplier = (int)numMultiplier.Value;
             }
+            else
+            {
+                unit.BaseUnitID = null;
+                unit.Multiplier = null;
+            }
 
             DBManagement.GetDB().Units.Add(unit);
 

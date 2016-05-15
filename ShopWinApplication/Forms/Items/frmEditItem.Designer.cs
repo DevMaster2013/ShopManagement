@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbItemData = new System.Windows.Forms.GroupBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.grbItemUnits = new System.Windows.Forms.GroupBox();
@@ -58,6 +58,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
+            this.chkHasExpire = new System.Windows.Forms.CheckBox();
             this.grbItemData.SuspendLayout();
             this.grbItemUnits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridItemUnits)).BeginInit();
@@ -70,6 +71,7 @@
             // 
             // grbItemData
             // 
+            this.grbItemData.Controls.Add(this.chkHasExpire);
             this.grbItemData.Controls.Add(this.btnBrowse);
             this.grbItemData.Controls.Add(this.grbItemUnits);
             this.grbItemData.Controls.Add(this.picImage);
@@ -91,7 +93,7 @@
             this.grbItemData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbItemData.Name = "grbItemData";
             this.grbItemData.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grbItemData.Size = new System.Drawing.Size(546, 530);
+            this.grbItemData.Size = new System.Drawing.Size(546, 556);
             this.grbItemData.TabIndex = 0;
             this.grbItemData.TabStop = false;
             this.grbItemData.Text = "بيانات الصنف الجديد";
@@ -108,7 +110,7 @@
             // grbItemUnits
             // 
             this.grbItemUnits.Controls.Add(this.dtGridItemUnits);
-            this.grbItemUnits.Location = new System.Drawing.Point(18, 203);
+            this.grbItemUnits.Location = new System.Drawing.Point(18, 232);
             this.grbItemUnits.Name = "grbItemUnits";
             this.grbItemUnits.Size = new System.Drawing.Size(501, 219);
             this.grbItemUnits.TabIndex = 7;
@@ -126,14 +128,14 @@
             this.Quantity,
             this.BuyPrice,
             this.SellPrice});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtGridItemUnits.Location = new System.Drawing.Point(6, 23);
             this.dtGridItemUnits.MultiSelect = false;
             this.dtGridItemUnits.Name = "dtGridItemUnits";
@@ -183,21 +185,21 @@
             // 
             // numReorderLevel
             // 
-            this.numReorderLevel.Location = new System.Drawing.Point(265, 143);
+            this.numReorderLevel.Location = new System.Drawing.Point(265, 173);
             this.numReorderLevel.Name = "numReorderLevel";
             this.numReorderLevel.Size = new System.Drawing.Size(120, 24);
             this.numReorderLevel.TabIndex = 5;
             // 
             // dateExpire
             // 
-            this.dateExpire.Location = new System.Drawing.Point(185, 113);
+            this.dateExpire.Location = new System.Drawing.Point(185, 143);
             this.dateExpire.Name = "dateExpire";
             this.dateExpire.Size = new System.Drawing.Size(200, 24);
             this.dateExpire.TabIndex = 4;
             // 
             // dateProduction
             // 
-            this.dateProduction.Location = new System.Drawing.Point(185, 83);
+            this.dateProduction.Location = new System.Drawing.Point(185, 113);
             this.dateProduction.Name = "dateProduction";
             this.dateProduction.Size = new System.Drawing.Size(200, 24);
             this.dateProduction.TabIndex = 4;
@@ -207,7 +209,7 @@
             this.comboLocations.DataSource = this.locationBindingSource;
             this.comboLocations.DisplayMember = "Name";
             this.comboLocations.FormattingEnabled = true;
-            this.comboLocations.Location = new System.Drawing.Point(200, 173);
+            this.comboLocations.Location = new System.Drawing.Point(200, 203);
             this.comboLocations.Name = "comboLocations";
             this.comboLocations.Size = new System.Drawing.Size(185, 24);
             this.comboLocations.TabIndex = 3;
@@ -234,7 +236,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(18, 428);
+            this.txtDescription.Location = new System.Drawing.Point(18, 457);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(367, 96);
             this.txtDescription.TabIndex = 2;
@@ -250,7 +252,7 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(387, 428);
+            this.lblDescription.Location = new System.Drawing.Point(387, 457);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(135, 17);
             this.lblDescription.TabIndex = 0;
@@ -259,7 +261,7 @@
             // lblExpireDate
             // 
             this.lblExpireDate.AutoSize = true;
-            this.lblExpireDate.Location = new System.Drawing.Point(395, 119);
+            this.lblExpireDate.Location = new System.Drawing.Point(395, 149);
             this.lblExpireDate.Name = "lblExpireDate";
             this.lblExpireDate.Size = new System.Drawing.Size(127, 17);
             this.lblExpireDate.TabIndex = 0;
@@ -268,7 +270,7 @@
             // lblProductionDate
             // 
             this.lblProductionDate.AutoSize = true;
-            this.lblProductionDate.Location = new System.Drawing.Point(444, 89);
+            this.lblProductionDate.Location = new System.Drawing.Point(444, 119);
             this.lblProductionDate.Name = "lblProductionDate";
             this.lblProductionDate.Size = new System.Drawing.Size(78, 17);
             this.lblProductionDate.TabIndex = 0;
@@ -277,7 +279,7 @@
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
-            this.lblLocation.Location = new System.Drawing.Point(442, 176);
+            this.lblLocation.Location = new System.Drawing.Point(442, 206);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(80, 17);
             this.lblLocation.TabIndex = 0;
@@ -295,7 +297,7 @@
             // lblReorderLevel
             // 
             this.lblReorderLevel.AutoSize = true;
-            this.lblReorderLevel.Location = new System.Drawing.Point(417, 145);
+            this.lblReorderLevel.Location = new System.Drawing.Point(417, 175);
             this.lblReorderLevel.Name = "lblReorderLevel";
             this.lblReorderLevel.Size = new System.Drawing.Size(105, 17);
             this.lblReorderLevel.TabIndex = 0;
@@ -315,7 +317,7 @@
             this.btnSave.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSave.Location = new System.Drawing.Point(12, 550);
+            this.btnSave.Location = new System.Drawing.Point(12, 576);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 34);
             this.btnSave.TabIndex = 1;
@@ -326,7 +328,7 @@
             // linkReturn
             // 
             this.linkReturn.AutoSize = true;
-            this.linkReturn.Location = new System.Drawing.Point(395, 550);
+            this.linkReturn.Location = new System.Drawing.Point(395, 576);
             this.linkReturn.Name = "linkReturn";
             this.linkReturn.Size = new System.Drawing.Size(152, 17);
             this.linkReturn.TabIndex = 2;
@@ -334,11 +336,22 @@
             this.linkReturn.Text = "الرجوع إلى قائمة الأصناف";
             this.linkReturn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReturn_LinkClicked);
             // 
+            // chkHasExpire
+            // 
+            this.chkHasExpire.AutoSize = true;
+            this.chkHasExpire.Location = new System.Drawing.Point(243, 84);
+            this.chkHasExpire.Name = "chkHasExpire";
+            this.chkHasExpire.Size = new System.Drawing.Size(142, 21);
+            this.chkHasExpire.TabIndex = 10;
+            this.chkHasExpire.Text = "هل للصنف صلاحية؟";
+            this.chkHasExpire.UseVisualStyleBackColor = true;
+            this.chkHasExpire.CheckedChanged += new System.EventHandler(this.chkHasExpire_CheckedChanged);
+            // 
             // frmEditItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 596);
+            this.ClientSize = new System.Drawing.Size(569, 622);
             this.Controls.Add(this.linkReturn);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.grbItemData);
@@ -397,5 +410,6 @@
         private System.Windows.Forms.BindingSource locationBindingSource;
         private System.Windows.Forms.BindingSource itemCategoryBindingSource;
         private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.CheckBox chkHasExpire;
     }
 }

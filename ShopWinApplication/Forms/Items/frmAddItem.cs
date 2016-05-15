@@ -45,11 +45,18 @@ namespace ShopWinApplication.Forms.Items
 
             Item item = new Item();
             item.Name = txtName.Text;
-            item.Description = txtDescription.Text;
-            item.ExpireDate = dateExpire.Value;
+            item.Description = txtDescription.Text;            
             item.ItemCategoryID = (long)comboCategories.SelectedValue;
-            item.LocationID = (long)comboLocations.SelectedValue;
-            item.ProductionDate = dateProduction.Value;
+            if ((long)comboLocations.SelectedValue != -1)
+                item.LocationID = (long)comboLocations.SelectedValue;
+            else
+                item.LocationID = null;
+
+            if (chkHasExpire.Checked)
+            {
+                item.ExpireDate = dateExpire.Value;
+                item.ProductionDate = dateProduction.Value;
+            }
             item.ReorderLevel = (int)numReorderLevel.Value;
             for (int i = 0; i < dtGridItemUnits.Rows.Count - 1; i++)
             {
@@ -100,7 +107,13 @@ namespace ShopWinApplication.Forms.Items
         {
             unitBindingSource.DataSource = DBManagement.GetDB().Units.ToList();
             itemCategoryBindingSource.DataSource = DBManagement.GetDB().ItemCategories.ToList();
-            locationBindingSource.DataSource = DBManagement.GetDB().Locations.ToList();
+            locationBindingSource.DataSource = DBManagement.GetLocationsForItem();
+        }
+
+        private void chkHasExpire_CheckedChanged(object sender, EventArgs e)
+        {
+            dateExpire.Enabled = chkHasExpire.Checked;
+            dateProduction.Enabled = chkHasExpire.Checked;
         }
     }
 }

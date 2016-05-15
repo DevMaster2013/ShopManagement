@@ -48,11 +48,24 @@ namespace ShopWinApplication.Forms.Items
                 return;
 
             currentItem.Name = txtName.Text;
-            currentItem.Description = txtDescription.Text;
-            currentItem.ExpireDate = dateExpire.Value;
+            currentItem.Description = txtDescription.Text;            
             currentItem.ItemCategoryID = (long)comboCategories.SelectedValue;
-            currentItem.LocationID = (long)comboLocations.SelectedValue;
-            currentItem.ProductionDate = dateProduction.Value;
+            if ((long)comboLocations.SelectedValue != -1)
+                currentItem.LocationID = (long)comboLocations.SelectedValue;
+            else
+                currentItem.LocationID = null;
+
+            if (chkHasExpire.Checked)
+            {
+                currentItem.ExpireDate = dateExpire.Value;
+                currentItem.ProductionDate = dateProduction.Value;
+            }
+            else
+            {
+                currentItem.ExpireDate = null;
+                currentItem.ProductionDate = null;
+            }
+
             currentItem.ReorderLevel = (int)numReorderLevel.Value;
             
             foreach (var it in currentItem.ItemUnits)
@@ -113,8 +126,11 @@ namespace ShopWinApplication.Forms.Items
             txtName.Text = currentItem.Name;
             txtDescription.Text = currentItem.Description;
             comboCategories.SelectedValue = currentItem.ItemCategoryID;
+            chkHasExpire.Checked = currentItem.ProductionDate.HasValue;
+
             if (currentItem.LocationID.HasValue)
                 comboLocations.SelectedValue = currentItem.LocationID;
+
             if (currentItem.ProductionDate.HasValue)
                 dateProduction.Value = currentItem.ProductionDate.Value;
             if (currentItem.ExpireDate.HasValue)
@@ -134,9 +150,15 @@ namespace ShopWinApplication.Forms.Items
         {
             unitBindingSource.DataSource = DBManagement.GetDB().Units.ToList();
             itemCategoryBindingSource.DataSource = DBManagement.GetDB().ItemCategories.ToList();
-            locationBindingSource.DataSource = DBManagement.GetDB().Locations.ToList();
+            locationBindingSource.DataSource = DBManagement.GetLocationsForItem();
 
             PopulateFormData();
+        }
+
+        private void chkHasExpire_CheckedChanged(object sender, EventArgs e)
+        {
+            dateExpire.Enabled = chkHasExpire.Checked;
+            dateProduction.Enabled = chkHasExpire.Checked;
         }
     }
 }
