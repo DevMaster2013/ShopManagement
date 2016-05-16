@@ -66,8 +66,11 @@ namespace ShopWinApplication.Forms.Items
                 dtGridItemUnits.Rows.Add(it.UnitID, itQuat.Quantity.ToString(), itPrice.BuyPrice.ToString(), itPrice.SellPrice.ToString());
             }
 
-            dataSellOrderCount.Text = currentItem.SellOrderItems.Count.ToString() + " عملية";
-            dataBuyOrdersCount.Text = currentItem.BuyOrderItems.Count.ToString() + " عملية";
+            int noSellOrders = currentItem.SellOrderItems.GroupBy(x => x.SellOrderID).Count();
+            int noBuyOrders = currentItem.BuyOrderItems.GroupBy(x => x.BuyOrderID).Count();
+
+            dataSellOrderCount.Text = noSellOrders.ToString() + " عملية";
+            dataBuyOrdersCount.Text = noBuyOrders.ToString() + " عملية";
             var bestSupplier = DBManagement.GetBestItemCategorySupplier(currentItem.ItemCategory);
             if (bestSupplier != null)
             {

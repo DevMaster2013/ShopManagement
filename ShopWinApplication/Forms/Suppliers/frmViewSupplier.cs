@@ -53,6 +53,8 @@ namespace ShopWinApplication.Forms.Suppliers
             txtTelNo.Text = currentSupplier.MobileNo;
             dataItemCategoryCount.Text = currentSupplier.ItemCategorySuppliers.Count().ToString() + " تصنيف";
             dataBuyOrderCount.Text = currentSupplier.BuyOrders.Count().ToString() + " عملية";
+
+            dataDebitTotal.Text = DBManagement.GetTotalDebitForSupplier(currentSupplier).ToString() + " جنيه مصرى";
         }
 
         private void frmViewSupplier_Load(object sender, EventArgs e)
@@ -64,6 +66,21 @@ namespace ShopWinApplication.Forms.Suppliers
         {
             frmEditSupplier frm = new frmEditSupplier(currentSupplier);
             frm.Show();
+        }
+
+        private void dataDebitTotal_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void dataBuyOrderCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void dataItemCategoryCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

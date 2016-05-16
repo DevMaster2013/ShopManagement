@@ -36,6 +36,7 @@
             this.linkLocations = new System.Windows.Forms.LinkLabel();
             this.linkItemCategories = new System.Windows.Forms.LinkLabel();
             this.lblEssentialDataDescription = new System.Windows.Forms.Label();
+            this.linkCustomers = new System.Windows.Forms.LinkLabel();
             this.grbEssentialData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,6 +44,7 @@
             // 
             this.grbEssentialData.BackColor = System.Drawing.Color.Transparent;
             this.grbEssentialData.Controls.Add(this.linkItems);
+            this.grbEssentialData.Controls.Add(this.linkCustomers);
             this.grbEssentialData.Controls.Add(this.linkSuppliers);
             this.grbEssentialData.Controls.Add(this.linkUnits);
             this.grbEssentialData.Controls.Add(this.linkLocations);
@@ -50,7 +52,7 @@
             this.grbEssentialData.Controls.Add(this.lblEssentialDataDescription);
             this.grbEssentialData.Location = new System.Drawing.Point(14, 15);
             this.grbEssentialData.Name = "grbEssentialData";
-            this.grbEssentialData.Size = new System.Drawing.Size(330, 153);
+            this.grbEssentialData.Size = new System.Drawing.Size(330, 173);
             this.grbEssentialData.TabIndex = 1;
             this.grbEssentialData.TabStop = false;
             this.grbEssentialData.Text = "البيانات الأساسية للمحل";
@@ -58,7 +60,7 @@
             // linkItems
             // 
             this.linkItems.AutoSize = true;
-            this.linkItems.Location = new System.Drawing.Point(110, 129);
+            this.linkItems.Location = new System.Drawing.Point(110, 146);
             this.linkItems.Name = "linkItems";
             this.linkItems.Size = new System.Drawing.Size(182, 17);
             this.linkItems.TabIndex = 1;
@@ -121,6 +123,17 @@
             this.lblEssentialDataDescription.Text = "البيانات الأساسية للمحل هى البيانات التى لا يتم تعديلها الا قليلا\r\nحيث يتم ادخاله" +
     "ا مرة واحدة فقط فى بداية التعامل مع البرنامج\r\nمثل (التصنيفات ، الأماكن ...)";
             // 
+            // linkCustomers
+            // 
+            this.linkCustomers.AutoSize = true;
+            this.linkCustomers.Location = new System.Drawing.Point(166, 129);
+            this.linkCustomers.Name = "linkCustomers";
+            this.linkCustomers.Size = new System.Drawing.Size(126, 17);
+            this.linkCustomers.TabIndex = 1;
+            this.linkCustomers.TabStop = true;
+            this.linkCustomers.Text = "قائمة العملاء بالمحل";
+            this.linkCustomers.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCustomers_LinkClicked);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -151,6 +164,7 @@
         private System.Windows.Forms.LinkLabel linkLocations;
         private System.Windows.Forms.LinkLabel linkItems;
         private System.Windows.Forms.LinkLabel linkSuppliers;
+        private System.Windows.Forms.LinkLabel linkCustomers;
     }
 }
 

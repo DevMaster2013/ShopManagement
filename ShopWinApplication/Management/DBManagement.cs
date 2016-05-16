@@ -35,7 +35,7 @@ namespace ShopWinApplication.Management
 
         public static Supplier GetBestItemCategorySupplier(ItemCategory itCat)
         {
-            var bestSupplier = itCat.ItemCategorySuppliers.OrderBy(x => x.Rate).First();
+            var bestSupplier = itCat.ItemCategorySuppliers.OrderBy(x => x.Rate).Last();
             if (bestSupplier != null)
                 return bestSupplier.Supplier;
             return null;
@@ -89,6 +89,40 @@ namespace ShopWinApplication.Management
 
                 return listReturned;
             }
+        }
+
+        internal static decimal GetTotalDebitForCustomer(Customer cust)
+        {
+            var lst = (from order in cust.SellOrders
+                       let order_total = GetSellOrderTotal(order)
+                       from cred in order.Credits
+                       group new { cred.SellOrder, order_total } by cred.SellOrderID into cred_group
+                       select cred_group.Sum(x => x.order_total - x.SellOrder.PayedAmount)).Sum();
+            return lst.Value;
+        }
+
+        public static decimal GetBuyOrderTotal(BuyOrder buyOrder)
+        {
+            var total = (from line in buyOrder.BuyOrderItems
+                        select new { SubTotal = (decimal)line.Quantity * line.UnitPrice }).Sum(x=> x.SubTotal);            
+            return total;
+        }
+
+        public static decimal GetSellOrderTotal(SellOrder sellOrder)
+        {
+            var total = (from line in sellOrder.SellOrderItems
+                         select new { SubTotal = (decimal)line.Quantity * line.UnitPrice }).Sum(x => x.SubTotal);
+            return total;
+        }
+
+        public static decimal GetTotalDebitForSupplier(Supplier sub)
+        {
+            var lst = (from order in sub.BuyOrders
+                      let order_total = GetBuyOrderTotal(order)
+                      from deb in order.Debits
+                      group new { deb.BuyOrder, order_total} by deb.BuyOrderID into deb_group                      
+                      select deb_group.Sum(x => x.order_total - x.BuyOrder.PayedAmount)).Sum();
+            return lst.Value;
         }
     }
 }

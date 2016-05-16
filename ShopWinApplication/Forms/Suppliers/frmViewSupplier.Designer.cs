@@ -41,8 +41,10 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblTelNo = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.dataDebitTotal = new System.Windows.Forms.LinkLabel();
             this.dataBuyOrderCount = new System.Windows.Forms.LinkLabel();
             this.dataItemCategoryCount = new System.Windows.Forms.LinkLabel();
+            this.lblDebitTotal = new System.Windows.Forms.Label();
             this.lblNoOfBuyOrder = new System.Windows.Forms.Label();
             this.lblNoOfItemCategories = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
@@ -64,8 +66,10 @@
             this.grbSupplierData.Controls.Add(this.txtAddress);
             this.grbSupplierData.Controls.Add(this.lblTelNo);
             this.grbSupplierData.Controls.Add(this.lblAddress);
+            this.grbSupplierData.Controls.Add(this.dataDebitTotal);
             this.grbSupplierData.Controls.Add(this.dataBuyOrderCount);
             this.grbSupplierData.Controls.Add(this.dataItemCategoryCount);
+            this.grbSupplierData.Controls.Add(this.lblDebitTotal);
             this.grbSupplierData.Controls.Add(this.lblNoOfBuyOrder);
             this.grbSupplierData.Controls.Add(this.lblNoOfItemCategories);
             this.grbSupplierData.Controls.Add(this.txtDescription);
@@ -76,7 +80,7 @@
             this.grbSupplierData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbSupplierData.Name = "grbSupplierData";
             this.grbSupplierData.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grbSupplierData.Size = new System.Drawing.Size(546, 429);
+            this.grbSupplierData.Size = new System.Drawing.Size(546, 456);
             this.grbSupplierData.TabIndex = 0;
             this.grbSupplierData.TabStop = false;
             this.grbSupplierData.Text = "بيانات المورد";
@@ -180,6 +184,16 @@
             this.lblAddress.TabIndex = 10;
             this.lblAddress.Text = "عنوان المورد:";
             // 
+            // dataDebitTotal
+            // 
+            this.dataDebitTotal.Location = new System.Drawing.Point(99, 427);
+            this.dataDebitTotal.Name = "dataDebitTotal";
+            this.dataDebitTotal.Size = new System.Drawing.Size(211, 17);
+            this.dataDebitTotal.TabIndex = 8;
+            this.dataDebitTotal.TabStop = true;
+            this.dataDebitTotal.Text = "0.0 جنيه مصرى";
+            this.dataDebitTotal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataDebitTotal_LinkClicked);
+            // 
             // dataBuyOrderCount
             // 
             this.dataBuyOrderCount.Location = new System.Drawing.Point(99, 400);
@@ -188,6 +202,7 @@
             this.dataBuyOrderCount.TabIndex = 8;
             this.dataBuyOrderCount.TabStop = true;
             this.dataBuyOrderCount.Text = "0 عملية";
+            this.dataBuyOrderCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataBuyOrderCount_LinkClicked);
             // 
             // dataItemCategoryCount
             // 
@@ -197,15 +212,25 @@
             this.dataItemCategoryCount.TabIndex = 8;
             this.dataItemCategoryCount.TabStop = true;
             this.dataItemCategoryCount.Text = "0 تصنيف";
+            this.dataItemCategoryCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataItemCategoryCount_LinkClicked);
+            // 
+            // lblDebitTotal
+            // 
+            this.lblDebitTotal.AutoSize = true;
+            this.lblDebitTotal.Location = new System.Drawing.Point(359, 427);
+            this.lblDebitTotal.Name = "lblDebitTotal";
+            this.lblDebitTotal.Size = new System.Drawing.Size(157, 17);
+            this.lblDebitTotal.TabIndex = 6;
+            this.lblDebitTotal.Text = "إجمالى مستحقات المورد:";
             // 
             // lblNoOfBuyOrder
             // 
             this.lblNoOfBuyOrder.AutoSize = true;
             this.lblNoOfBuyOrder.Location = new System.Drawing.Point(337, 400);
             this.lblNoOfBuyOrder.Name = "lblNoOfBuyOrder";
-            this.lblNoOfBuyOrder.Size = new System.Drawing.Size(183, 17);
+            this.lblNoOfBuyOrder.Size = new System.Drawing.Size(179, 17);
             this.lblNoOfBuyOrder.TabIndex = 6;
-            this.lblNoOfBuyOrder.Text = "عمليات الشراء من هذا العميل:";
+            this.lblNoOfBuyOrder.Text = "عمليات الشراء من هذا المورد:";
             // 
             // lblNoOfItemCategories
             // 
@@ -254,7 +279,7 @@
             // linkReturn
             // 
             this.linkReturn.AutoSize = true;
-            this.linkReturn.Location = new System.Drawing.Point(383, 446);
+            this.linkReturn.Location = new System.Drawing.Point(383, 473);
             this.linkReturn.Name = "linkReturn";
             this.linkReturn.Size = new System.Drawing.Size(157, 17);
             this.linkReturn.TabIndex = 2;
@@ -265,7 +290,7 @@
             // linkEdit
             // 
             this.linkEdit.AutoSize = true;
-            this.linkEdit.Location = new System.Drawing.Point(9, 446);
+            this.linkEdit.Location = new System.Drawing.Point(9, 473);
             this.linkEdit.Name = "linkEdit";
             this.linkEdit.Size = new System.Drawing.Size(41, 17);
             this.linkEdit.TabIndex = 3;
@@ -277,7 +302,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 477);
+            this.ClientSize = new System.Drawing.Size(569, 499);
             this.Controls.Add(this.linkEdit);
             this.Controls.Add(this.linkReturn);
             this.Controls.Add(this.grbSupplierData);
@@ -324,5 +349,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;
         private System.Windows.Forms.LinkLabel linkEdit;
+        private System.Windows.Forms.LinkLabel dataDebitTotal;
+        private System.Windows.Forms.Label lblDebitTotal;
     }
 }

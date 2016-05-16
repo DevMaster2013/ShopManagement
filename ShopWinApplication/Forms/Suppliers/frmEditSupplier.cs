@@ -54,29 +54,19 @@ namespace ShopWinApplication.Forms.Suppliers
             currentSupplier.Address = txtAddress.Text;
             currentSupplier.MobileNo = txtTelNo.Text;
 
+            DBManagement.GetDB().ItemCategorySuppliers.RemoveRange(currentSupplier.ItemCategorySuppliers);
             var selectedCategories = itemCategoryForSupplierBindingSource.List;
 
             foreach (var item in selectedCategories)
             {
                 ItemCategoryForSupplier itCat = item as ItemCategoryForSupplier;
-                var found = currentSupplier.ItemCategorySuppliers.Where(x => x.ItemCategoryID == itCat.CategoryID);
-                if (found.Count() > 0)
+                if (itCat.IsSupplied)
                 {
-                    if (!itCat.IsSupplied)
-                    {
-                        DBManagement.GetDB().ItemCategorySuppliers.Remove(found.First());
-                    }                    
-                }
-                else
-                {
-                    if (itCat.IsSupplied)
-                    {
-                        ItemCategorySupplier itCatSup = new ItemCategorySupplier();
-                        itCatSup.Supplier = currentSupplier;
-                        itCatSup.ItemCategoryID = itCat.CategoryID;
-                        itCatSup.Rate = itCat.Rate;
-                        currentSupplier.ItemCategorySuppliers.Add(itCatSup);
-                    }
+                    ItemCategorySupplier itCatSup = new ItemCategorySupplier();
+                    itCatSup.Supplier = currentSupplier;
+                    itCatSup.ItemCategoryID = itCat.CategoryID;
+                    itCatSup.Rate = itCat.Rate;
+                    currentSupplier.ItemCategorySuppliers.Add(itCatSup);
                 }
             }
 
