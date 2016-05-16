@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbSupplierData = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtGridSuppliers = new System.Windows.Forms.DataGridView();
+            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemCategoryForSupplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtTelNo = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblTelNo = new System.Windows.Forms.Label();
@@ -44,15 +50,10 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.itemCategoryForSupplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtGridSuppliers = new System.Windows.Forms.DataGridView();
-            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkEdit = new System.Windows.Forms.LinkLabel();
             this.grbSupplierData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemCategoryForSupplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSuppliers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemCategoryForSupplierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // grbSupplierData
@@ -79,6 +80,71 @@
             this.grbSupplierData.TabIndex = 0;
             this.grbSupplierData.TabStop = false;
             this.grbSupplierData.Text = "بيانات المورد";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(303, 203);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(217, 17);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "التصنيفات التى يوردها المورد للمحل:";
+            // 
+            // dtGridSuppliers
+            // 
+            this.dtGridSuppliers.AllowUserToAddRows = false;
+            this.dtGridSuppliers.AllowUserToDeleteRows = false;
+            this.dtGridSuppliers.AutoGenerateColumns = false;
+            this.dtGridSuppliers.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtGridSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtGridSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridSuppliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.categoryIDDataGridViewTextBoxColumn,
+            this.categoryNameDataGridViewTextBoxColumn,
+            this.rateDataGridViewTextBoxColumn});
+            this.dtGridSuppliers.DataSource = this.itemCategoryForSupplierBindingSource;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridSuppliers.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dtGridSuppliers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dtGridSuppliers.Location = new System.Drawing.Point(18, 223);
+            this.dtGridSuppliers.MultiSelect = false;
+            this.dtGridSuppliers.Name = "dtGridSuppliers";
+            this.dtGridSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridSuppliers.Size = new System.Drawing.Size(499, 146);
+            this.dtGridSuppliers.TabIndex = 14;
+            // 
+            // categoryIDDataGridViewTextBoxColumn
+            // 
+            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "CategoryID";
+            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "CategoryID";
+            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
+            this.categoryIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // categoryNameDataGridViewTextBoxColumn
+            // 
+            this.categoryNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
+            this.categoryNameDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "اسم التصنيف";
+            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
+            // 
+            // rateDataGridViewTextBoxColumn
+            // 
+            this.rateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
+            this.rateDataGridViewTextBoxColumn.FillWeight = 20F;
+            this.rateDataGridViewTextBoxColumn.HeaderText = "التقييم";
+            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
+            // 
+            // itemCategoryForSupplierBindingSource
+            // 
+            this.itemCategoryForSupplierBindingSource.DataSource = typeof(ShopWinApplication.Data.ViewModels.ItemCategoryForSupplier);
             // 
             // txtTelNo
             // 
@@ -116,20 +182,18 @@
             // 
             // dataBuyOrderCount
             // 
-            this.dataBuyOrderCount.AutoSize = true;
-            this.dataBuyOrderCount.Location = new System.Drawing.Point(252, 400);
+            this.dataBuyOrderCount.Location = new System.Drawing.Point(99, 400);
             this.dataBuyOrderCount.Name = "dataBuyOrderCount";
-            this.dataBuyOrderCount.Size = new System.Drawing.Size(55, 17);
+            this.dataBuyOrderCount.Size = new System.Drawing.Size(211, 17);
             this.dataBuyOrderCount.TabIndex = 8;
             this.dataBuyOrderCount.TabStop = true;
             this.dataBuyOrderCount.Text = "0 عملية";
             // 
             // dataItemCategoryCount
             // 
-            this.dataItemCategoryCount.AutoSize = true;
-            this.dataItemCategoryCount.Location = new System.Drawing.Point(249, 372);
+            this.dataItemCategoryCount.Location = new System.Drawing.Point(115, 372);
             this.dataItemCategoryCount.Name = "dataItemCategoryCount";
-            this.dataItemCategoryCount.Size = new System.Drawing.Size(58, 17);
+            this.dataItemCategoryCount.Size = new System.Drawing.Size(195, 17);
             this.dataItemCategoryCount.TabIndex = 8;
             this.dataItemCategoryCount.TabStop = true;
             this.dataItemCategoryCount.Text = "0 تصنيف";
@@ -198,76 +262,23 @@
             this.linkReturn.Text = "الرجوع إلى قائمة الموردين";
             this.linkReturn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReturn_LinkClicked);
             // 
-            // label1
+            // linkEdit
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(303, 203);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 17);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "التصنيفات التى يوردها المورد للمحل:";
-            // 
-            // itemCategoryForSupplierBindingSource
-            // 
-            this.itemCategoryForSupplierBindingSource.DataSource = typeof(ShopWinApplication.Data.ViewModels.ItemCategoryForSupplier);
-            // 
-            // dtGridSuppliers
-            // 
-            this.dtGridSuppliers.AllowUserToAddRows = false;
-            this.dtGridSuppliers.AllowUserToDeleteRows = false;
-            this.dtGridSuppliers.AutoGenerateColumns = false;
-            this.dtGridSuppliers.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dtGridSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtGridSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridSuppliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.categoryIDDataGridViewTextBoxColumn,
-            this.categoryNameDataGridViewTextBoxColumn,
-            this.rateDataGridViewTextBoxColumn});
-            this.dtGridSuppliers.DataSource = this.itemCategoryForSupplierBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridSuppliers.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dtGridSuppliers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtGridSuppliers.Location = new System.Drawing.Point(18, 223);
-            this.dtGridSuppliers.MultiSelect = false;
-            this.dtGridSuppliers.Name = "dtGridSuppliers";
-            this.dtGridSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridSuppliers.Size = new System.Drawing.Size(499, 146);
-            this.dtGridSuppliers.TabIndex = 14;
-            // 
-            // categoryIDDataGridViewTextBoxColumn
-            // 
-            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "CategoryID";
-            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "CategoryID";
-            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
-            this.categoryIDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // categoryNameDataGridViewTextBoxColumn
-            // 
-            this.categoryNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
-            this.categoryNameDataGridViewTextBoxColumn.FillWeight = 60F;
-            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "اسم التصنيف";
-            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
-            // 
-            // rateDataGridViewTextBoxColumn
-            // 
-            this.rateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
-            this.rateDataGridViewTextBoxColumn.FillWeight = 20F;
-            this.rateDataGridViewTextBoxColumn.HeaderText = "التقييم";
-            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
+            this.linkEdit.AutoSize = true;
+            this.linkEdit.Location = new System.Drawing.Point(9, 446);
+            this.linkEdit.Name = "linkEdit";
+            this.linkEdit.Size = new System.Drawing.Size(41, 17);
+            this.linkEdit.TabIndex = 3;
+            this.linkEdit.TabStop = true;
+            this.linkEdit.Text = "تعديل";
+            this.linkEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEdit_LinkClicked);
             // 
             // frmViewSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 477);
+            this.Controls.Add(this.linkEdit);
             this.Controls.Add(this.linkReturn);
             this.Controls.Add(this.grbSupplierData);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -278,11 +289,13 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "عرض بيانات المورد";
+            this.Activated += new System.EventHandler(this.frmViewSupplier_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewSupplier_FormClosed);
+            this.Load += new System.EventHandler(this.frmViewSupplier_Load);
             this.grbSupplierData.ResumeLayout(false);
             this.grbSupplierData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemCategoryForSupplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSuppliers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemCategoryForSupplierBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +323,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.LinkLabel linkEdit;
     }
 }

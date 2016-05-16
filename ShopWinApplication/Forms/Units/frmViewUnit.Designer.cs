@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.grbUnitData = new System.Windows.Forms.GroupBox();
+            this.lblMultiplier = new System.Windows.Forms.Label();
+            this.lblBaseUnit = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.txtMultiplier = new System.Windows.Forms.TextBox();
+            this.txtBaseUnit = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
-            this.lblMultiplier = new System.Windows.Forms.Label();
-            this.lblBaseUnit = new System.Windows.Forms.Label();
-            this.txtBaseUnit = new System.Windows.Forms.TextBox();
-            this.txtMultiplier = new System.Windows.Forms.TextBox();
+            this.linkEdit = new System.Windows.Forms.LinkLabel();
             this.grbUnitData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +61,24 @@
             this.grbUnitData.TabStop = false;
             this.grbUnitData.Text = "بيانات الوحدة";
             // 
+            // lblMultiplier
+            // 
+            this.lblMultiplier.AutoSize = true;
+            this.lblMultiplier.Location = new System.Drawing.Point(440, 186);
+            this.lblMultiplier.Name = "lblMultiplier";
+            this.lblMultiplier.Size = new System.Drawing.Size(83, 17);
+            this.lblMultiplier.TabIndex = 7;
+            this.lblMultiplier.Text = "كمية الوحدة:";
+            // 
+            // lblBaseUnit
+            // 
+            this.lblBaseUnit.AutoSize = true;
+            this.lblBaseUnit.Location = new System.Drawing.Point(419, 160);
+            this.lblBaseUnit.Name = "lblBaseUnit";
+            this.lblBaseUnit.Size = new System.Drawing.Size(104, 17);
+            this.lblBaseUnit.TabIndex = 8;
+            this.lblBaseUnit.Text = "الوحدة الرئيسية:";
+            // 
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(18, 51);
@@ -68,6 +87,22 @@
             this.txtDescription.Size = new System.Drawing.Size(367, 96);
             this.txtDescription.TabIndex = 2;
             this.txtDescription.Text = "";
+            // 
+            // txtMultiplier
+            // 
+            this.txtMultiplier.Location = new System.Drawing.Point(287, 183);
+            this.txtMultiplier.Name = "txtMultiplier";
+            this.txtMultiplier.ReadOnly = true;
+            this.txtMultiplier.Size = new System.Drawing.Size(99, 24);
+            this.txtMultiplier.TabIndex = 1;
+            // 
+            // txtBaseUnit
+            // 
+            this.txtBaseUnit.Location = new System.Drawing.Point(18, 157);
+            this.txtBaseUnit.Name = "txtBaseUnit";
+            this.txtBaseUnit.ReadOnly = true;
+            this.txtBaseUnit.Size = new System.Drawing.Size(368, 24);
+            this.txtBaseUnit.TabIndex = 1;
             // 
             // txtName
             // 
@@ -106,45 +141,23 @@
             this.linkReturn.Text = "الرجوع إلى قائمة الوحدات";
             this.linkReturn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReturn_LinkClicked);
             // 
-            // lblMultiplier
+            // linkEdit
             // 
-            this.lblMultiplier.AutoSize = true;
-            this.lblMultiplier.Location = new System.Drawing.Point(440, 186);
-            this.lblMultiplier.Name = "lblMultiplier";
-            this.lblMultiplier.Size = new System.Drawing.Size(83, 17);
-            this.lblMultiplier.TabIndex = 7;
-            this.lblMultiplier.Text = "كمية الوحدة:";
-            // 
-            // lblBaseUnit
-            // 
-            this.lblBaseUnit.AutoSize = true;
-            this.lblBaseUnit.Location = new System.Drawing.Point(419, 160);
-            this.lblBaseUnit.Name = "lblBaseUnit";
-            this.lblBaseUnit.Size = new System.Drawing.Size(104, 17);
-            this.lblBaseUnit.TabIndex = 8;
-            this.lblBaseUnit.Text = "الوحدة الرئيسية:";
-            // 
-            // txtBaseUnit
-            // 
-            this.txtBaseUnit.Location = new System.Drawing.Point(18, 157);
-            this.txtBaseUnit.Name = "txtBaseUnit";
-            this.txtBaseUnit.ReadOnly = true;
-            this.txtBaseUnit.Size = new System.Drawing.Size(368, 24);
-            this.txtBaseUnit.TabIndex = 1;
-            // 
-            // txtMultiplier
-            // 
-            this.txtMultiplier.Location = new System.Drawing.Point(287, 183);
-            this.txtMultiplier.Name = "txtMultiplier";
-            this.txtMultiplier.ReadOnly = true;
-            this.txtMultiplier.Size = new System.Drawing.Size(99, 24);
-            this.txtMultiplier.TabIndex = 1;
+            this.linkEdit.AutoSize = true;
+            this.linkEdit.Location = new System.Drawing.Point(9, 236);
+            this.linkEdit.Name = "linkEdit";
+            this.linkEdit.Size = new System.Drawing.Size(41, 17);
+            this.linkEdit.TabIndex = 9;
+            this.linkEdit.TabStop = true;
+            this.linkEdit.Text = "تعديل";
+            this.linkEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEdit_LinkClicked);
             // 
             // frmViewUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 262);
+            this.Controls.Add(this.linkEdit);
             this.Controls.Add(this.linkReturn);
             this.Controls.Add(this.grbUnitData);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -155,7 +168,9 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "عرض بيانات الوحدة";
+            this.Activated += new System.EventHandler(this.frmViewUnit_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewUnit_FormClosed);
+            this.Load += new System.EventHandler(this.frmViewUnit_Load);
             this.grbUnitData.ResumeLayout(false);
             this.grbUnitData.PerformLayout();
             this.ResumeLayout(false);
@@ -175,5 +190,6 @@
         private System.Windows.Forms.Label lblBaseUnit;
         private System.Windows.Forms.TextBox txtMultiplier;
         private System.Windows.Forms.TextBox txtBaseUnit;
+        private System.Windows.Forms.LinkLabel linkEdit;
     }
 }

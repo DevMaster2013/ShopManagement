@@ -21,8 +21,7 @@ namespace ShopWinApplication.Forms.Suppliers
             InitializeComponent();           
             OpenForms.AddOpenedForm(this);
 
-            currentSupplier = DBManagement.GetDB().Suppliers.Find(sub.ID);
-            PopulateFormData();
+            currentSupplier = DBManagement.GetDB().Suppliers.Find(sub.ID);            
         }
 
         private void linkReturn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -54,6 +53,17 @@ namespace ShopWinApplication.Forms.Suppliers
             txtTelNo.Text = currentSupplier.MobileNo;
             dataItemCategoryCount.Text = currentSupplier.ItemCategorySuppliers.Count().ToString() + " تصنيف";
             dataBuyOrderCount.Text = currentSupplier.BuyOrders.Count().ToString() + " عملية";
+        }
+
+        private void frmViewSupplier_Load(object sender, EventArgs e)
+        {
+            PopulateFormData();
+        }
+
+        private void linkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmEditSupplier frm = new frmEditSupplier(currentSupplier);
+            frm.Show();
         }
     }
 }

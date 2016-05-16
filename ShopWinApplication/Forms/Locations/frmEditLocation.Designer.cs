@@ -126,7 +126,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "تعديل بيانات المكان";
-            this.Activated += new System.EventHandler(this.frmEditLocation_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmEditLocation_FormClosed);
             this.Load += new System.EventHandler(this.frmEditLocation_Load);
             this.grbLocationData.ResumeLayout(false);

@@ -365,7 +365,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "إضافة صنف جديد";
-            this.Activated += new System.EventHandler(this.frmAddItem_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddItem_FormClosed);
             this.Load += new System.EventHandler(this.frmAddItem_Load);
             this.grbItemData.ResumeLayout(false);

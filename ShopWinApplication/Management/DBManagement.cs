@@ -33,6 +33,14 @@ namespace ShopWinApplication.Management
             return returnedList;
         }
 
+        public static Supplier GetBestItemCategorySupplier(ItemCategory itCat)
+        {
+            var bestSupplier = itCat.ItemCategorySuppliers.OrderBy(x => x.Rate).First();
+            if (bestSupplier != null)
+                return bestSupplier.Supplier;
+            return null;
+        }
+
         public static List<ItemCategoryForSupplier> GetItemCategoriesForSuppliers(long ID, bool includeAll = false)
         {
             if (ID == -1)

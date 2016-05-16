@@ -38,13 +38,18 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
+            this.linkEdit = new System.Windows.Forms.LinkLabel();
+            this.lblBestSupplier = new System.Windows.Forms.Label();
+            this.linkBestSupplier = new System.Windows.Forms.LinkLabel();
             this.grbItemCategoryData.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbItemCategoryData
             // 
+            this.grbItemCategoryData.Controls.Add(this.linkBestSupplier);
             this.grbItemCategoryData.Controls.Add(this.dataSuppliersCount);
             this.grbItemCategoryData.Controls.Add(this.dataItemCount);
+            this.grbItemCategoryData.Controls.Add(this.lblBestSupplier);
             this.grbItemCategoryData.Controls.Add(this.lblNoOfSuppliers);
             this.grbItemCategoryData.Controls.Add(this.lblNoOfItems);
             this.grbItemCategoryData.Controls.Add(this.txtDescription);
@@ -55,17 +60,16 @@
             this.grbItemCategoryData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbItemCategoryData.Name = "grbItemCategoryData";
             this.grbItemCategoryData.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grbItemCategoryData.Size = new System.Drawing.Size(546, 232);
+            this.grbItemCategoryData.Size = new System.Drawing.Size(546, 268);
             this.grbItemCategoryData.TabIndex = 0;
             this.grbItemCategoryData.TabStop = false;
             this.grbItemCategoryData.Text = "بيانات التصنيف";
             // 
             // dataSuppliersCount
             // 
-            this.dataSuppliersCount.AutoSize = true;
-            this.dataSuppliersCount.Location = new System.Drawing.Point(297, 193);
+            this.dataSuppliersCount.Location = new System.Drawing.Point(177, 193);
             this.dataSuppliersCount.Name = "dataSuppliersCount";
-            this.dataSuppliersCount.Size = new System.Drawing.Size(45, 17);
+            this.dataSuppliersCount.Size = new System.Drawing.Size(165, 17);
             this.dataSuppliersCount.TabIndex = 7;
             this.dataSuppliersCount.TabStop = true;
             this.dataSuppliersCount.Text = "0 مورد";
@@ -73,10 +77,9 @@
             // 
             // dataItemCount
             // 
-            this.dataItemCount.AutoSize = true;
-            this.dataItemCount.Location = new System.Drawing.Point(297, 162);
+            this.dataItemCount.Location = new System.Drawing.Point(177, 162);
             this.dataItemCount.Name = "dataItemCount";
-            this.dataItemCount.Size = new System.Drawing.Size(49, 17);
+            this.dataItemCount.Size = new System.Drawing.Size(169, 17);
             this.dataItemCount.TabIndex = 8;
             this.dataItemCount.TabStop = true;
             this.dataItemCount.Text = "0 صنف";
@@ -138,7 +141,7 @@
             // linkReturn
             // 
             this.linkReturn.AutoSize = true;
-            this.linkReturn.Location = new System.Drawing.Point(395, 249);
+            this.linkReturn.Location = new System.Drawing.Point(392, 285);
             this.linkReturn.Name = "linkReturn";
             this.linkReturn.Size = new System.Drawing.Size(163, 17);
             this.linkReturn.TabIndex = 2;
@@ -146,11 +149,42 @@
             this.linkReturn.Text = "الرجوع إلى قائمة التصنيفات";
             this.linkReturn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReturn_LinkClicked);
             // 
+            // linkEdit
+            // 
+            this.linkEdit.AutoSize = true;
+            this.linkEdit.Location = new System.Drawing.Point(9, 285);
+            this.linkEdit.Name = "linkEdit";
+            this.linkEdit.Size = new System.Drawing.Size(41, 17);
+            this.linkEdit.TabIndex = 2;
+            this.linkEdit.TabStop = true;
+            this.linkEdit.Text = "تعديل";
+            this.linkEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEdit_LinkClicked);
+            // 
+            // lblBestSupplier
+            // 
+            this.lblBestSupplier.AutoSize = true;
+            this.lblBestSupplier.Location = new System.Drawing.Point(383, 225);
+            this.lblBestSupplier.Name = "lblBestSupplier";
+            this.lblBestSupplier.Size = new System.Drawing.Size(149, 17);
+            this.lblBestSupplier.TabIndex = 5;
+            this.lblBestSupplier.Text = "أفضل مورد لهذا التصنيف:";
+            // 
+            // linkBestSupplier
+            // 
+            this.linkBestSupplier.Location = new System.Drawing.Point(139, 225);
+            this.linkBestSupplier.Name = "linkBestSupplier";
+            this.linkBestSupplier.Size = new System.Drawing.Size(203, 17);
+            this.linkBestSupplier.TabIndex = 7;
+            this.linkBestSupplier.TabStop = true;
+            this.linkBestSupplier.Text = "لا يوجد موردين لهذا التصنيف";
+            this.linkBestSupplier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkBestSupplier_LinkClicked);
+            // 
             // frmViewItemCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 280);
+            this.ClientSize = new System.Drawing.Size(569, 311);
+            this.Controls.Add(this.linkEdit);
             this.Controls.Add(this.linkReturn);
             this.Controls.Add(this.grbItemCategoryData);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -161,7 +195,9 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "عرض بيانات التصنيف";
+            this.Activated += new System.EventHandler(this.frmViewItemCategory_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewItemCategory_FormClosed);
+            this.Load += new System.EventHandler(this.frmViewItemCategory_Load);
             this.grbItemCategoryData.ResumeLayout(false);
             this.grbItemCategoryData.PerformLayout();
             this.ResumeLayout(false);
@@ -181,5 +217,8 @@
         private System.Windows.Forms.LinkLabel dataItemCount;
         private System.Windows.Forms.Label lblNoOfSuppliers;
         private System.Windows.Forms.Label lblNoOfItems;
+        private System.Windows.Forms.LinkLabel linkEdit;
+        private System.Windows.Forms.LinkLabel linkBestSupplier;
+        private System.Windows.Forms.Label lblBestSupplier;
     }
 }

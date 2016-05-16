@@ -21,8 +21,7 @@ namespace ShopWinApplication.Forms.ItemCategories
             InitializeComponent();           
             OpenForms.AddOpenedForm(this);
 
-            currentItemCategory = DBManagement.GetDB().ItemCategories.Find(itCat.ID);
-            PopulateFormData();
+            currentItemCategory = DBManagement.GetDB().ItemCategories.Find(itCat.ID);            
         }
 
         private void linkReturn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -50,6 +49,18 @@ namespace ShopWinApplication.Forms.ItemCategories
             txtDescription.Text = currentItemCategory.Description;
             dataItemCount.Text = currentItemCategory.Items.Count().ToString() + " صنف";
             dataSuppliersCount.Text = currentItemCategory.ItemCategorySuppliers.Count().ToString() + " مورد";
+
+            var bestSupplier = DBManagement.GetBestItemCategorySupplier(currentItemCategory);
+            if (bestSupplier != null)
+            {
+                linkBestSupplier.Text = bestSupplier.Name;
+                linkBestSupplier.Enabled = true;
+            }
+            else
+            {
+                linkBestSupplier.Text = "لا يوجد موردين لهذا التصنيف";
+                linkBestSupplier.Enabled = false;
+            }
         }
 
         private void dataItemCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -58,6 +69,22 @@ namespace ShopWinApplication.Forms.ItemCategories
         }
 
         private void dataSuppliersCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void frmViewItemCategory_Load(object sender, EventArgs e)
+        {
+            PopulateFormData();
+        }
+
+        private void linkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmEditItemCategory frm = new frmEditItemCategory(currentItemCategory);
+            frm.Show();
+        }
+
+        private void linkBestSupplier_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }

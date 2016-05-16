@@ -21,8 +21,7 @@ namespace ShopWinApplication.Forms.Locations
             InitializeComponent();           
             OpenForms.AddOpenedForm(this);
 
-            currentLocation = DBManagement.GetDB().Locations.Find(loc.ID);
-            PopulateFormData();
+            currentLocation = DBManagement.GetDB().Locations.Find(loc.ID);            
         }
 
         private void linkReturn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -54,6 +53,17 @@ namespace ShopWinApplication.Forms.Locations
         private void dataItemCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void frmViewLocation_Load(object sender, EventArgs e)
+        {
+            PopulateFormData();
+        }
+
+        private void linkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmEditLocation frm = new frmEditLocation(currentLocation);
+            frm.Show();
         }
     }
 }

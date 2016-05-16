@@ -126,7 +126,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "تعديل بيانات التصنيف";
-            this.Activated += new System.EventHandler(this.frmEditItemCategory_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmEditItemCategory_FormClosed);
             this.Load += new System.EventHandler(this.frmEditItemCategory_Load);
             this.grbItemCategoryData.ResumeLayout(false);

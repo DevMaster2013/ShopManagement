@@ -36,6 +36,7 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
+            this.linkEdit = new System.Windows.Forms.LinkLabel();
             this.grbLocationData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,10 +59,9 @@
             // 
             // dataItemCount
             // 
-            this.dataItemCount.AutoSize = true;
-            this.dataItemCount.Location = new System.Drawing.Point(297, 162);
+            this.dataItemCount.Location = new System.Drawing.Point(237, 162);
             this.dataItemCount.Name = "dataItemCount";
-            this.dataItemCount.Size = new System.Drawing.Size(49, 17);
+            this.dataItemCount.Size = new System.Drawing.Size(109, 17);
             this.dataItemCount.TabIndex = 8;
             this.dataItemCount.TabStop = true;
             this.dataItemCount.Text = "0 صنف";
@@ -122,11 +122,23 @@
             this.linkReturn.Text = "الرجوع إلى قائمة الأماكن";
             this.linkReturn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReturn_LinkClicked);
             // 
+            // linkEdit
+            // 
+            this.linkEdit.AutoSize = true;
+            this.linkEdit.Location = new System.Drawing.Point(9, 209);
+            this.linkEdit.Name = "linkEdit";
+            this.linkEdit.Size = new System.Drawing.Size(41, 17);
+            this.linkEdit.TabIndex = 3;
+            this.linkEdit.TabStop = true;
+            this.linkEdit.Text = "تعديل";
+            this.linkEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEdit_LinkClicked);
+            // 
             // frmViewLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 237);
+            this.Controls.Add(this.linkEdit);
             this.Controls.Add(this.linkReturn);
             this.Controls.Add(this.grbLocationData);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -137,7 +149,9 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "عرض بيانات المكان";
+            this.Activated += new System.EventHandler(this.frmViewLocation_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewLocation_FormClosed);
+            this.Load += new System.EventHandler(this.frmViewLocation_Load);
             this.grbLocationData.ResumeLayout(false);
             this.grbLocationData.PerformLayout();
             this.ResumeLayout(false);
@@ -155,5 +169,6 @@
         private System.Windows.Forms.LinkLabel linkReturn;
         private System.Windows.Forms.LinkLabel dataItemCount;
         private System.Windows.Forms.Label lblNoOfItems;
+        private System.Windows.Forms.LinkLabel linkEdit;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbItemData = new System.Windows.Forms.GroupBox();
             this.grbItemUnits = new System.Windows.Forms.GroupBox();
             this.dtGridItemUnits = new System.Windows.Forms.DataGridView();
@@ -41,6 +41,10 @@
             this.dateExpire = new System.Windows.Forms.DateTimePicker();
             this.dateProduction = new System.Windows.Forms.DateTimePicker();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.numReorderLevel = new System.Windows.Forms.TextBox();
+            this.txtLocation = new System.Windows.Forms.TextBox();
+            this.txtExpire = new System.Windows.Forms.TextBox();
+            this.txtItemCategory = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblExpireDate = new System.Windows.Forms.Label();
@@ -50,11 +54,14 @@
             this.lblReorderLevel = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
-            this.txtItemCategory = new System.Windows.Forms.TextBox();
-            this.numReorderLevel = new System.Windows.Forms.TextBox();
-            this.txtLocation = new System.Windows.Forms.TextBox();
+            this.linkEdit = new System.Windows.Forms.LinkLabel();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtExpire = new System.Windows.Forms.TextBox();
+            this.dataBuyOrdersCount = new System.Windows.Forms.LinkLabel();
+            this.dataSellOrderCount = new System.Windows.Forms.LinkLabel();
+            this.lblBuyOrdersCount = new System.Windows.Forms.Label();
+            this.lblNoSellOrders = new System.Windows.Forms.Label();
+            this.linkBestSupplier = new System.Windows.Forms.LinkLabel();
+            this.lblBestSupplier = new System.Windows.Forms.Label();
             this.grbItemData.SuspendLayout();
             this.grbItemUnits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridItemUnits)).BeginInit();
@@ -64,6 +71,12 @@
             // 
             // grbItemData
             // 
+            this.grbItemData.Controls.Add(this.linkBestSupplier);
+            this.grbItemData.Controls.Add(this.lblBestSupplier);
+            this.grbItemData.Controls.Add(this.dataBuyOrdersCount);
+            this.grbItemData.Controls.Add(this.dataSellOrderCount);
+            this.grbItemData.Controls.Add(this.lblBuyOrdersCount);
+            this.grbItemData.Controls.Add(this.lblNoSellOrders);
             this.grbItemData.Controls.Add(this.grbItemUnits);
             this.grbItemData.Controls.Add(this.picImage);
             this.grbItemData.Controls.Add(this.dateExpire);
@@ -85,7 +98,7 @@
             this.grbItemData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbItemData.Name = "grbItemData";
             this.grbItemData.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grbItemData.Size = new System.Drawing.Size(546, 556);
+            this.grbItemData.Size = new System.Drawing.Size(546, 654);
             this.grbItemData.TabIndex = 0;
             this.grbItemData.TabStop = false;
             this.grbItemData.Text = "بيانات الصنف";
@@ -113,14 +126,14 @@
             this.Quantity,
             this.BuyPrice,
             this.SellPrice});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtGridItemUnits.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtGridItemUnits.Location = new System.Drawing.Point(6, 23);
             this.dtGridItemUnits.MultiSelect = false;
@@ -187,6 +200,38 @@
             this.txtDescription.Size = new System.Drawing.Size(367, 96);
             this.txtDescription.TabIndex = 2;
             this.txtDescription.Text = "";
+            // 
+            // numReorderLevel
+            // 
+            this.numReorderLevel.Location = new System.Drawing.Point(284, 172);
+            this.numReorderLevel.Name = "numReorderLevel";
+            this.numReorderLevel.ReadOnly = true;
+            this.numReorderLevel.Size = new System.Drawing.Size(101, 24);
+            this.numReorderLevel.TabIndex = 1;
+            // 
+            // txtLocation
+            // 
+            this.txtLocation.Location = new System.Drawing.Point(185, 203);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.ReadOnly = true;
+            this.txtLocation.Size = new System.Drawing.Size(200, 24);
+            this.txtLocation.TabIndex = 1;
+            // 
+            // txtExpire
+            // 
+            this.txtExpire.Location = new System.Drawing.Point(185, 83);
+            this.txtExpire.Name = "txtExpire";
+            this.txtExpire.ReadOnly = true;
+            this.txtExpire.Size = new System.Drawing.Size(200, 24);
+            this.txtExpire.TabIndex = 1;
+            // 
+            // txtItemCategory
+            // 
+            this.txtItemCategory.Location = new System.Drawing.Point(185, 54);
+            this.txtItemCategory.Name = "txtItemCategory";
+            this.txtItemCategory.ReadOnly = true;
+            this.txtItemCategory.Size = new System.Drawing.Size(200, 24);
+            this.txtItemCategory.TabIndex = 1;
             // 
             // txtName
             // 
@@ -262,7 +307,7 @@
             // linkReturn
             // 
             this.linkReturn.AutoSize = true;
-            this.linkReturn.Location = new System.Drawing.Point(395, 576);
+            this.linkReturn.Location = new System.Drawing.Point(395, 671);
             this.linkReturn.Name = "linkReturn";
             this.linkReturn.Size = new System.Drawing.Size(152, 17);
             this.linkReturn.TabIndex = 2;
@@ -270,47 +315,84 @@
             this.linkReturn.Text = "الرجوع إلى قائمة الأصناف";
             this.linkReturn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReturn_LinkClicked);
             // 
-            // txtItemCategory
+            // linkEdit
             // 
-            this.txtItemCategory.Location = new System.Drawing.Point(185, 54);
-            this.txtItemCategory.Name = "txtItemCategory";
-            this.txtItemCategory.ReadOnly = true;
-            this.txtItemCategory.Size = new System.Drawing.Size(200, 24);
-            this.txtItemCategory.TabIndex = 1;
-            // 
-            // numReorderLevel
-            // 
-            this.numReorderLevel.Location = new System.Drawing.Point(284, 172);
-            this.numReorderLevel.Name = "numReorderLevel";
-            this.numReorderLevel.ReadOnly = true;
-            this.numReorderLevel.Size = new System.Drawing.Size(101, 24);
-            this.numReorderLevel.TabIndex = 1;
-            // 
-            // txtLocation
-            // 
-            this.txtLocation.Location = new System.Drawing.Point(185, 203);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.ReadOnly = true;
-            this.txtLocation.Size = new System.Drawing.Size(200, 24);
-            this.txtLocation.TabIndex = 1;
+            this.linkEdit.AutoSize = true;
+            this.linkEdit.Location = new System.Drawing.Point(9, 671);
+            this.linkEdit.Name = "linkEdit";
+            this.linkEdit.Size = new System.Drawing.Size(41, 17);
+            this.linkEdit.TabIndex = 3;
+            this.linkEdit.TabStop = true;
+            this.linkEdit.Text = "تعديل";
+            this.linkEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEdit_LinkClicked);
             // 
             // unitBindingSource
             // 
             this.unitBindingSource.DataSource = typeof(ShopWinApplication.Data.Unit);
             // 
-            // txtExpire
+            // dataBuyOrdersCount
             // 
-            this.txtExpire.Location = new System.Drawing.Point(185, 83);
-            this.txtExpire.Name = "txtExpire";
-            this.txtExpire.ReadOnly = true;
-            this.txtExpire.Size = new System.Drawing.Size(200, 24);
-            this.txtExpire.TabIndex = 1;
+            this.dataBuyOrdersCount.Location = new System.Drawing.Point(204, 596);
+            this.dataBuyOrdersCount.Name = "dataBuyOrdersCount";
+            this.dataBuyOrdersCount.Size = new System.Drawing.Size(165, 17);
+            this.dataBuyOrdersCount.TabIndex = 11;
+            this.dataBuyOrdersCount.TabStop = true;
+            this.dataBuyOrdersCount.Text = "0 عملية";
+            this.dataBuyOrdersCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataBuyOrdersCount_LinkClicked);
+            // 
+            // dataSellOrderCount
+            // 
+            this.dataSellOrderCount.Location = new System.Drawing.Point(200, 565);
+            this.dataSellOrderCount.Name = "dataSellOrderCount";
+            this.dataSellOrderCount.Size = new System.Drawing.Size(169, 17);
+            this.dataSellOrderCount.TabIndex = 12;
+            this.dataSellOrderCount.TabStop = true;
+            this.dataSellOrderCount.Text = "0 عملية";
+            this.dataSellOrderCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataSellOrderCount_LinkClicked);
+            // 
+            // lblBuyOrdersCount
+            // 
+            this.lblBuyOrdersCount.AutoSize = true;
+            this.lblBuyOrdersCount.Location = new System.Drawing.Point(409, 596);
+            this.lblBuyOrdersCount.Name = "lblBuyOrdersCount";
+            this.lblBuyOrdersCount.Size = new System.Drawing.Size(107, 17);
+            this.lblBuyOrdersCount.TabIndex = 9;
+            this.lblBuyOrdersCount.Text = "عدد مرات الشراء:";
+            // 
+            // lblNoSellOrders
+            // 
+            this.lblNoSellOrders.AutoSize = true;
+            this.lblNoSellOrders.Location = new System.Drawing.Point(420, 565);
+            this.lblNoSellOrders.Name = "lblNoSellOrders";
+            this.lblNoSellOrders.Size = new System.Drawing.Size(96, 17);
+            this.lblNoSellOrders.TabIndex = 10;
+            this.lblNoSellOrders.Text = "عدد مرات البيع:";
+            // 
+            // linkBestSupplier
+            // 
+            this.linkBestSupplier.Location = new System.Drawing.Point(172, 628);
+            this.linkBestSupplier.Name = "linkBestSupplier";
+            this.linkBestSupplier.Size = new System.Drawing.Size(197, 17);
+            this.linkBestSupplier.TabIndex = 14;
+            this.linkBestSupplier.TabStop = true;
+            this.linkBestSupplier.Text = "لا يوجد موردين لهذا الصنف";
+            this.linkBestSupplier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkBestSupplier_LinkClicked);
+            // 
+            // lblBestSupplier
+            // 
+            this.lblBestSupplier.AutoSize = true;
+            this.lblBestSupplier.Location = new System.Drawing.Point(377, 628);
+            this.lblBestSupplier.Name = "lblBestSupplier";
+            this.lblBestSupplier.Size = new System.Drawing.Size(139, 17);
+            this.lblBestSupplier.TabIndex = 13;
+            this.lblBestSupplier.Text = "أفضل مورد لهذا الصنف:";
             // 
             // frmViewItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 622);
+            this.ClientSize = new System.Drawing.Size(569, 697);
+            this.Controls.Add(this.linkEdit);
             this.Controls.Add(this.linkReturn);
             this.Controls.Add(this.grbItemData);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -321,9 +403,9 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "عرض بيانات الصنف";
-            this.Activated += new System.EventHandler(this.frmAddItem_Load);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddItem_FormClosed);
-            this.Load += new System.EventHandler(this.frmAddItem_Load);
+            this.Activated += new System.EventHandler(this.frmViewItem_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewItem_FormClosed);
+            this.Load += new System.EventHandler(this.frmViewItem_Load);
             this.grbItemData.ResumeLayout(false);
             this.grbItemData.PerformLayout();
             this.grbItemUnits.ResumeLayout(false);
@@ -362,5 +444,12 @@
         private System.Windows.Forms.TextBox numReorderLevel;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.TextBox txtExpire;
+        private System.Windows.Forms.LinkLabel linkEdit;
+        private System.Windows.Forms.LinkLabel dataBuyOrdersCount;
+        private System.Windows.Forms.LinkLabel dataSellOrderCount;
+        private System.Windows.Forms.Label lblBuyOrdersCount;
+        private System.Windows.Forms.Label lblNoSellOrders;
+        private System.Windows.Forms.LinkLabel linkBestSupplier;
+        private System.Windows.Forms.Label lblBestSupplier;
     }
 }

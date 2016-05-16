@@ -21,7 +21,7 @@ namespace ShopWinApplication.Forms.Items
             InitializeComponent();
             OpenForms.AddOpenedForm(this);
 
-            currentItem = DBManagement.GetDB().Items.Find(item.ID);
+            currentItem = DBManagement.GetDB().Items.Find(item.ID);            
         }
 
         private void linkReturn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -37,7 +37,7 @@ namespace ShopWinApplication.Forms.Items
             }
         }
 
-        private void frmAddItem_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmViewItem_FormClosed(object sender, FormClosedEventArgs e)
         {
             OpenForms.RemoveForm(this);
         }
@@ -65,13 +65,48 @@ namespace ShopWinApplication.Forms.Items
                 ItemPrice itPrice = it.ItemPrices.FirstOrDefault();
                 dtGridItemUnits.Rows.Add(it.UnitID, itQuat.Quantity.ToString(), itPrice.BuyPrice.ToString(), itPrice.SellPrice.ToString());
             }
+
+            dataSellOrderCount.Text = currentItem.SellOrderItems.Count.ToString() + " عملية";
+            dataBuyOrdersCount.Text = currentItem.BuyOrderItems.Count.ToString() + " عملية";
+            var bestSupplier = DBManagement.GetBestItemCategorySupplier(currentItem.ItemCategory);
+            if (bestSupplier != null)
+            {
+                linkBestSupplier.Text = bestSupplier.Name;
+                linkBestSupplier.Enabled = true;
+            }
+            else
+            {
+                linkBestSupplier.Text = "لا يوجد موردين لهذا الصنف";
+                linkBestSupplier.Enabled = false;
+            }
         }
 
-        private void frmAddItem_Load(object sender, EventArgs e)
+        private void frmViewItem_Load(object sender, EventArgs e)
         {
             unitBindingSource.DataSource = DBManagement.GetDB().Units.ToList();
 
             PopulateFormData();
+        }
+
+        private void linkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmEditItem frm = new frmEditItem(currentItem);
+            frm.Show();
+        }
+
+        private void dataSellOrderCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void dataBuyOrdersCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void linkBestSupplier_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

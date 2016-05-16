@@ -21,8 +21,7 @@ namespace ShopWinApplication.Forms.Units
             InitializeComponent();           
             OpenForms.AddOpenedForm(this);
 
-            currentUnit = DBManagement.GetDB().Units.Find(unit.ID);
-            PopulateFormData();
+            currentUnit = DBManagement.GetDB().Units.Find(unit.ID);            
         }
 
         private void PopulateFormData()
@@ -59,6 +58,17 @@ namespace ShopWinApplication.Forms.Units
         private void frmViewUnit_FormClosed(object sender, FormClosedEventArgs e)
         {
             OpenForms.RemoveForm(this);
+        }
+
+        private void frmViewUnit_Load(object sender, EventArgs e)
+        {
+            PopulateFormData();
+        }
+
+        private void linkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmEditUnit frm = new frmEditUnit(currentUnit);
+            frm.Show();
         }
     }
 }
