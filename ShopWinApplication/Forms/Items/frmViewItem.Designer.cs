@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbItemData = new System.Windows.Forms.GroupBox();
+            this.linkBestSupplier = new System.Windows.Forms.LinkLabel();
+            this.lblBestSupplier = new System.Windows.Forms.Label();
+            this.dataBuyOrdersCount = new System.Windows.Forms.LinkLabel();
+            this.dataSellOrderCount = new System.Windows.Forms.LinkLabel();
+            this.lblBuyOrdersCount = new System.Windows.Forms.Label();
+            this.lblNoSellOrders = new System.Windows.Forms.Label();
             this.grbItemUnits = new System.Windows.Forms.GroupBox();
             this.dtGridItemUnits = new System.Windows.Forms.DataGridView();
-            this.ItemUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BuyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.picImage = new System.Windows.Forms.PictureBox();
             this.dateExpire = new System.Windows.Forms.DateTimePicker();
             this.dateProduction = new System.Windows.Forms.DateTimePicker();
@@ -55,18 +58,15 @@
             this.lblName = new System.Windows.Forms.Label();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
             this.linkEdit = new System.Windows.Forms.LinkLabel();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataBuyOrdersCount = new System.Windows.Forms.LinkLabel();
-            this.dataSellOrderCount = new System.Windows.Forms.LinkLabel();
-            this.lblBuyOrdersCount = new System.Windows.Forms.Label();
-            this.lblNoSellOrders = new System.Windows.Forms.Label();
-            this.linkBestSupplier = new System.Windows.Forms.LinkLabel();
-            this.lblBestSupplier = new System.Windows.Forms.Label();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.BuyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbItemData.SuspendLayout();
             this.grbItemUnits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridItemUnits)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
             // grbItemData
@@ -103,6 +103,63 @@
             this.grbItemData.TabStop = false;
             this.grbItemData.Text = "بيانات الصنف";
             // 
+            // linkBestSupplier
+            // 
+            this.linkBestSupplier.Location = new System.Drawing.Point(172, 628);
+            this.linkBestSupplier.Name = "linkBestSupplier";
+            this.linkBestSupplier.Size = new System.Drawing.Size(197, 17);
+            this.linkBestSupplier.TabIndex = 14;
+            this.linkBestSupplier.TabStop = true;
+            this.linkBestSupplier.Text = "لا يوجد موردين لهذا الصنف";
+            this.linkBestSupplier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkBestSupplier_LinkClicked);
+            // 
+            // lblBestSupplier
+            // 
+            this.lblBestSupplier.AutoSize = true;
+            this.lblBestSupplier.Location = new System.Drawing.Point(377, 628);
+            this.lblBestSupplier.Name = "lblBestSupplier";
+            this.lblBestSupplier.Size = new System.Drawing.Size(139, 17);
+            this.lblBestSupplier.TabIndex = 13;
+            this.lblBestSupplier.Text = "أفضل مورد لهذا الصنف:";
+            // 
+            // dataBuyOrdersCount
+            // 
+            this.dataBuyOrdersCount.Location = new System.Drawing.Point(204, 596);
+            this.dataBuyOrdersCount.Name = "dataBuyOrdersCount";
+            this.dataBuyOrdersCount.Size = new System.Drawing.Size(165, 17);
+            this.dataBuyOrdersCount.TabIndex = 11;
+            this.dataBuyOrdersCount.TabStop = true;
+            this.dataBuyOrdersCount.Text = "0 عملية";
+            this.dataBuyOrdersCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataBuyOrdersCount_LinkClicked);
+            // 
+            // dataSellOrderCount
+            // 
+            this.dataSellOrderCount.Location = new System.Drawing.Point(200, 565);
+            this.dataSellOrderCount.Name = "dataSellOrderCount";
+            this.dataSellOrderCount.Size = new System.Drawing.Size(169, 17);
+            this.dataSellOrderCount.TabIndex = 12;
+            this.dataSellOrderCount.TabStop = true;
+            this.dataSellOrderCount.Text = "0 عملية";
+            this.dataSellOrderCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataSellOrderCount_LinkClicked);
+            // 
+            // lblBuyOrdersCount
+            // 
+            this.lblBuyOrdersCount.AutoSize = true;
+            this.lblBuyOrdersCount.Location = new System.Drawing.Point(409, 596);
+            this.lblBuyOrdersCount.Name = "lblBuyOrdersCount";
+            this.lblBuyOrdersCount.Size = new System.Drawing.Size(107, 17);
+            this.lblBuyOrdersCount.TabIndex = 9;
+            this.lblBuyOrdersCount.Text = "عدد مرات الشراء:";
+            // 
+            // lblNoSellOrders
+            // 
+            this.lblNoSellOrders.AutoSize = true;
+            this.lblNoSellOrders.Location = new System.Drawing.Point(420, 565);
+            this.lblNoSellOrders.Name = "lblNoSellOrders";
+            this.lblNoSellOrders.Size = new System.Drawing.Size(96, 17);
+            this.lblNoSellOrders.TabIndex = 10;
+            this.lblNoSellOrders.Text = "عدد مرات البيع:";
+            // 
             // grbItemUnits
             // 
             this.grbItemUnits.Controls.Add(this.dtGridItemUnits);
@@ -122,18 +179,18 @@
             this.dtGridItemUnits.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtGridItemUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridItemUnits.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemUnit,
             this.Quantity,
+            this.ItemUnit,
             this.BuyPrice,
             this.SellPrice});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle1;
             this.dtGridItemUnits.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtGridItemUnits.Location = new System.Drawing.Point(6, 23);
             this.dtGridItemUnits.MultiSelect = false;
@@ -142,32 +199,9 @@
             this.dtGridItemUnits.Size = new System.Drawing.Size(489, 190);
             this.dtGridItemUnits.TabIndex = 2;
             // 
-            // ItemUnit
+            // unitBindingSource
             // 
-            this.ItemUnit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemUnit.DataSource = this.unitBindingSource;
-            this.ItemUnit.DisplayMember = "Name";
-            this.ItemUnit.HeaderText = "الوحدة";
-            this.ItemUnit.Name = "ItemUnit";
-            this.ItemUnit.ValueMember = "ID";
-            // 
-            // Quantity
-            // 
-            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Quantity.HeaderText = "الكمية";
-            this.Quantity.Name = "Quantity";
-            // 
-            // BuyPrice
-            // 
-            this.BuyPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BuyPrice.HeaderText = "سعر الشراء";
-            this.BuyPrice.Name = "BuyPrice";
-            // 
-            // SellPrice
-            // 
-            this.SellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SellPrice.HeaderText = "سعر البيع";
-            this.SellPrice.Name = "SellPrice";
+            this.unitBindingSource.DataSource = typeof(ShopWinApplication.Data.Unit);
             // 
             // picImage
             // 
@@ -180,6 +214,7 @@
             // 
             // dateExpire
             // 
+            this.dateExpire.Enabled = false;
             this.dateExpire.Location = new System.Drawing.Point(185, 143);
             this.dateExpire.Name = "dateExpire";
             this.dateExpire.Size = new System.Drawing.Size(200, 24);
@@ -187,6 +222,7 @@
             // 
             // dateProduction
             // 
+            this.dateProduction.Enabled = false;
             this.dateProduction.Location = new System.Drawing.Point(185, 113);
             this.dateProduction.Name = "dateProduction";
             this.dateProduction.Size = new System.Drawing.Size(200, 24);
@@ -326,66 +362,32 @@
             this.linkEdit.Text = "تعديل";
             this.linkEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEdit_LinkClicked);
             // 
-            // unitBindingSource
+            // Quantity
             // 
-            this.unitBindingSource.DataSource = typeof(ShopWinApplication.Data.Unit);
+            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Quantity.HeaderText = "الكمية";
+            this.Quantity.Name = "Quantity";
             // 
-            // dataBuyOrdersCount
+            // ItemUnit
             // 
-            this.dataBuyOrdersCount.Location = new System.Drawing.Point(204, 596);
-            this.dataBuyOrdersCount.Name = "dataBuyOrdersCount";
-            this.dataBuyOrdersCount.Size = new System.Drawing.Size(165, 17);
-            this.dataBuyOrdersCount.TabIndex = 11;
-            this.dataBuyOrdersCount.TabStop = true;
-            this.dataBuyOrdersCount.Text = "0 عملية";
-            this.dataBuyOrdersCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataBuyOrdersCount_LinkClicked);
+            this.ItemUnit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemUnit.DataSource = this.unitBindingSource;
+            this.ItemUnit.DisplayMember = "Name";
+            this.ItemUnit.HeaderText = "الوحدة";
+            this.ItemUnit.Name = "ItemUnit";
+            this.ItemUnit.ValueMember = "ID";
             // 
-            // dataSellOrderCount
+            // BuyPrice
             // 
-            this.dataSellOrderCount.Location = new System.Drawing.Point(200, 565);
-            this.dataSellOrderCount.Name = "dataSellOrderCount";
-            this.dataSellOrderCount.Size = new System.Drawing.Size(169, 17);
-            this.dataSellOrderCount.TabIndex = 12;
-            this.dataSellOrderCount.TabStop = true;
-            this.dataSellOrderCount.Text = "0 عملية";
-            this.dataSellOrderCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dataSellOrderCount_LinkClicked);
+            this.BuyPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BuyPrice.HeaderText = "سعر الشراء";
+            this.BuyPrice.Name = "BuyPrice";
             // 
-            // lblBuyOrdersCount
+            // SellPrice
             // 
-            this.lblBuyOrdersCount.AutoSize = true;
-            this.lblBuyOrdersCount.Location = new System.Drawing.Point(409, 596);
-            this.lblBuyOrdersCount.Name = "lblBuyOrdersCount";
-            this.lblBuyOrdersCount.Size = new System.Drawing.Size(107, 17);
-            this.lblBuyOrdersCount.TabIndex = 9;
-            this.lblBuyOrdersCount.Text = "عدد مرات الشراء:";
-            // 
-            // lblNoSellOrders
-            // 
-            this.lblNoSellOrders.AutoSize = true;
-            this.lblNoSellOrders.Location = new System.Drawing.Point(420, 565);
-            this.lblNoSellOrders.Name = "lblNoSellOrders";
-            this.lblNoSellOrders.Size = new System.Drawing.Size(96, 17);
-            this.lblNoSellOrders.TabIndex = 10;
-            this.lblNoSellOrders.Text = "عدد مرات البيع:";
-            // 
-            // linkBestSupplier
-            // 
-            this.linkBestSupplier.Location = new System.Drawing.Point(172, 628);
-            this.linkBestSupplier.Name = "linkBestSupplier";
-            this.linkBestSupplier.Size = new System.Drawing.Size(197, 17);
-            this.linkBestSupplier.TabIndex = 14;
-            this.linkBestSupplier.TabStop = true;
-            this.linkBestSupplier.Text = "لا يوجد موردين لهذا الصنف";
-            this.linkBestSupplier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkBestSupplier_LinkClicked);
-            // 
-            // lblBestSupplier
-            // 
-            this.lblBestSupplier.AutoSize = true;
-            this.lblBestSupplier.Location = new System.Drawing.Point(377, 628);
-            this.lblBestSupplier.Name = "lblBestSupplier";
-            this.lblBestSupplier.Size = new System.Drawing.Size(139, 17);
-            this.lblBestSupplier.TabIndex = 13;
-            this.lblBestSupplier.Text = "أفضل مورد لهذا الصنف:";
+            this.SellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SellPrice.HeaderText = "سعر البيع";
+            this.SellPrice.Name = "SellPrice";
             // 
             // frmViewItem
             // 
@@ -410,8 +412,8 @@
             this.grbItemData.PerformLayout();
             this.grbItemUnits.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridItemUnits)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,11 +437,7 @@
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.GroupBox grbItemUnits;
         private System.Windows.Forms.DataGridView dtGridItemUnits;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ItemUnit;
         private System.Windows.Forms.BindingSource unitBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BuyPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
         private System.Windows.Forms.TextBox txtItemCategory;
         private System.Windows.Forms.TextBox numReorderLevel;
         private System.Windows.Forms.TextBox txtLocation;
@@ -451,5 +449,9 @@
         private System.Windows.Forms.Label lblNoSellOrders;
         private System.Windows.Forms.LinkLabel linkBestSupplier;
         private System.Windows.Forms.Label lblBestSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BuyPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
     }
 }

@@ -29,16 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbItemData = new System.Windows.Forms.GroupBox();
+            this.chkHasExpire = new System.Windows.Forms.CheckBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.grbItemUnits = new System.Windows.Forms.GroupBox();
             this.dtGridItemUnits = new System.Windows.Forms.DataGridView();
-            this.ItemUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BuyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.picImage = new System.Windows.Forms.PictureBox();
             this.numReorderLevel = new System.Windows.Forms.NumericUpDown();
             this.dateExpire = new System.Windows.Forms.DateTimePicker();
@@ -58,7 +55,10 @@
             this.lblName = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.linkReturn = new System.Windows.Forms.LinkLabel();
-            this.chkHasExpire = new System.Windows.Forms.CheckBox();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.BuyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbItemData.SuspendLayout();
             this.grbItemUnits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridItemUnits)).BeginInit();
@@ -98,6 +98,17 @@
             this.grbItemData.TabStop = false;
             this.grbItemData.Text = "بيانات الصنف الجديد";
             // 
+            // chkHasExpire
+            // 
+            this.chkHasExpire.AutoSize = true;
+            this.chkHasExpire.Location = new System.Drawing.Point(243, 84);
+            this.chkHasExpire.Name = "chkHasExpire";
+            this.chkHasExpire.Size = new System.Drawing.Size(142, 21);
+            this.chkHasExpire.TabIndex = 10;
+            this.chkHasExpire.Text = "هل للصنف صلاحية؟";
+            this.chkHasExpire.UseVisualStyleBackColor = true;
+            this.chkHasExpire.CheckedChanged += new System.EventHandler(this.chkHasExpire_CheckedChanged);
+            // 
             // btnBrowse
             // 
             this.btnBrowse.Location = new System.Drawing.Point(18, 164);
@@ -124,18 +135,18 @@
             this.dtGridItemUnits.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtGridItemUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridItemUnits.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemUnit,
             this.Quantity,
+            this.ItemUnit,
             this.BuyPrice,
             this.SellPrice});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridItemUnits.DefaultCellStyle = dataGridViewCellStyle1;
             this.dtGridItemUnits.Location = new System.Drawing.Point(6, 23);
             this.dtGridItemUnits.MultiSelect = false;
             this.dtGridItemUnits.Name = "dtGridItemUnits";
@@ -143,36 +154,9 @@
             this.dtGridItemUnits.Size = new System.Drawing.Size(489, 190);
             this.dtGridItemUnits.TabIndex = 2;
             // 
-            // ItemUnit
-            // 
-            this.ItemUnit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemUnit.DataSource = this.unitBindingSource;
-            this.ItemUnit.DisplayMember = "Name";
-            this.ItemUnit.HeaderText = "الوحدة";
-            this.ItemUnit.Name = "ItemUnit";
-            this.ItemUnit.ValueMember = "ID";
-            // 
             // unitBindingSource
             // 
             this.unitBindingSource.DataSource = typeof(ShopWinApplication.Data.Unit);
-            // 
-            // Quantity
-            // 
-            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Quantity.HeaderText = "الكمية";
-            this.Quantity.Name = "Quantity";
-            // 
-            // BuyPrice
-            // 
-            this.BuyPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BuyPrice.HeaderText = "سعر الشراء";
-            this.BuyPrice.Name = "BuyPrice";
-            // 
-            // SellPrice
-            // 
-            this.SellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SellPrice.HeaderText = "سعر البيع";
-            this.SellPrice.Name = "SellPrice";
             // 
             // picImage
             // 
@@ -336,16 +320,32 @@
             this.linkReturn.Text = "الرجوع إلى قائمة الأصناف";
             this.linkReturn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReturn_LinkClicked);
             // 
-            // chkHasExpire
+            // Quantity
             // 
-            this.chkHasExpire.AutoSize = true;
-            this.chkHasExpire.Location = new System.Drawing.Point(243, 84);
-            this.chkHasExpire.Name = "chkHasExpire";
-            this.chkHasExpire.Size = new System.Drawing.Size(142, 21);
-            this.chkHasExpire.TabIndex = 10;
-            this.chkHasExpire.Text = "هل للصنف صلاحية؟";
-            this.chkHasExpire.UseVisualStyleBackColor = true;
-            this.chkHasExpire.CheckedChanged += new System.EventHandler(this.chkHasExpire_CheckedChanged);
+            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Quantity.HeaderText = "الكمية";
+            this.Quantity.Name = "Quantity";
+            // 
+            // ItemUnit
+            // 
+            this.ItemUnit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemUnit.DataSource = this.unitBindingSource;
+            this.ItemUnit.DisplayMember = "Name";
+            this.ItemUnit.HeaderText = "الوحدة";
+            this.ItemUnit.Name = "ItemUnit";
+            this.ItemUnit.ValueMember = "ID";
+            // 
+            // BuyPrice
+            // 
+            this.BuyPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BuyPrice.HeaderText = "سعر الشراء";
+            this.BuyPrice.Name = "BuyPrice";
+            // 
+            // SellPrice
+            // 
+            this.SellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SellPrice.HeaderText = "سعر البيع";
+            this.SellPrice.Name = "SellPrice";
             // 
             // frmEditItem
             // 
@@ -401,14 +401,14 @@
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.GroupBox grbItemUnits;
         private System.Windows.Forms.DataGridView dtGridItemUnits;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ItemUnit;
         private System.Windows.Forms.BindingSource unitBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BuyPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
         private System.Windows.Forms.BindingSource locationBindingSource;
         private System.Windows.Forms.BindingSource itemCategoryBindingSource;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.CheckBox chkHasExpire;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BuyPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
     }
 }

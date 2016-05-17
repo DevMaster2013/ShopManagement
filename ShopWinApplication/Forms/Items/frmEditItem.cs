@@ -142,7 +142,7 @@ namespace ShopWinApplication.Forms.Items
             {
                 ItemQuantity itQuat = it.ItemQuantities.FirstOrDefault();
                 ItemPrice itPrice = it.ItemPrices.FirstOrDefault();
-                dtGridItemUnits.Rows.Add(it.UnitID, itQuat.Quantity.ToString(), itPrice.BuyPrice.ToString(), itPrice.SellPrice.ToString());
+                dtGridItemUnits.Rows.Add(itQuat.Quantity.ToString(), it.UnitID, itPrice.BuyPrice.ToString(), itPrice.SellPrice.ToString());
             }
         }
 
