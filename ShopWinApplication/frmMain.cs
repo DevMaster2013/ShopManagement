@@ -60,5 +60,25 @@ namespace ShopWinApplication
             Forms.Customers.frmCustomers frm = new Forms.Customers.frmCustomers();
             frm.Show();
         }
+
+        private void linkSellOrders_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void linkBuyOrders_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void linkCredits_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void linkDebits_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

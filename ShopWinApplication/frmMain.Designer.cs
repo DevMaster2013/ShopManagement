@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.grbEssentialData = new System.Windows.Forms.GroupBox();
             this.linkItems = new System.Windows.Forms.LinkLabel();
             this.linkCustomers = new System.Windows.Forms.LinkLabel();
@@ -38,36 +37,36 @@
             this.linkItemCategories = new System.Windows.Forms.LinkLabel();
             this.lblEssentialDataDescription = new System.Windows.Forms.Label();
             this.grbBuySellManagement = new System.Windows.Forms.GroupBox();
+            this.linkDebits = new System.Windows.Forms.LinkLabel();
             this.linkCredits = new System.Windows.Forms.LinkLabel();
             this.linkBuyOrders = new System.Windows.Forms.LinkLabel();
             this.linkSellOrders = new System.Windows.Forms.LinkLabel();
             this.lblBuySellManagementTitle = new System.Windows.Forms.Label();
-            this.linkDebits = new System.Windows.Forms.LinkLabel();
             this.grbExpensesAndExternal = new System.Windows.Forms.GroupBox();
             this.linkExternalCredits = new System.Windows.Forms.LinkLabel();
             this.linkExternalDebits = new System.Windows.Forms.LinkLabel();
             this.linkExpenses = new System.Windows.Forms.LinkLabel();
             this.lblExpensesAndExternalTitle = new System.Windows.Forms.Label();
             this.grbFastOperations = new System.Windows.Forms.GroupBox();
+            this.linkSearchSellOrder = new System.Windows.Forms.LinkLabel();
+            this.linkSearchBuyOrder = new System.Windows.Forms.LinkLabel();
+            this.linkAddExpense = new System.Windows.Forms.LinkLabel();
+            this.linkCollectExternalCredit = new System.Windows.Forms.LinkLabel();
+            this.linkPayExternalDebit = new System.Windows.Forms.LinkLabel();
+            this.linkSearchItem = new System.Windows.Forms.LinkLabel();
             this.linkPayDebit = new System.Windows.Forms.LinkLabel();
+            this.linkCollectCredit = new System.Windows.Forms.LinkLabel();
             this.linkAddSellOrder = new System.Windows.Forms.LinkLabel();
             this.linkAddBuyOrder = new System.Windows.Forms.LinkLabel();
             this.lblFastOperationsTitle = new System.Windows.Forms.Label();
-            this.linkCollectCredit = new System.Windows.Forms.LinkLabel();
-            this.linkPayExternalDebit = new System.Windows.Forms.LinkLabel();
-            this.linkCollectExternalCredit = new System.Windows.Forms.LinkLabel();
-            this.linkSearchItem = new System.Windows.Forms.LinkLabel();
-            this.linkSearchBuyOrder = new System.Windows.Forms.LinkLabel();
-            this.linkSearchSellOrder = new System.Windows.Forms.LinkLabel();
-            this.linkAddExpense = new System.Windows.Forms.LinkLabel();
             this.grbDailyReports = new System.Windows.Forms.GroupBox();
+            this.linkViewSupplierOperations = new System.Windows.Forms.LinkLabel();
+            this.linkViewCustomerOperations = new System.Windows.Forms.LinkLabel();
             this.linkViewCurrentItems = new System.Windows.Forms.LinkLabel();
             this.linkViewExpiredItems = new System.Windows.Forms.LinkLabel();
             this.linkViewFinishedItems = new System.Windows.Forms.LinkLabel();
             this.linkViewNearlyFinishedItems = new System.Windows.Forms.LinkLabel();
             this.lblDailyReportsTitle = new System.Windows.Forms.Label();
-            this.linkViewCustomerOperations = new System.Windows.Forms.LinkLabel();
-            this.linkViewSupplierOperations = new System.Windows.Forms.LinkLabel();
             this.grbFinancialManagement = new System.Windows.Forms.GroupBox();
             this.linkViewDebitSummary = new System.Windows.Forms.LinkLabel();
             this.linkViewExpense = new System.Windows.Forms.LinkLabel();
@@ -192,6 +191,17 @@
             this.grbBuySellManagement.TabStop = false;
             this.grbBuySellManagement.Text = "إدارة البيع والشراء";
             // 
+            // linkDebits
+            // 
+            this.linkDebits.AutoSize = true;
+            this.linkDebits.Location = new System.Drawing.Point(10, 129);
+            this.linkDebits.Name = "linkDebits";
+            this.linkDebits.Size = new System.Drawing.Size(149, 17);
+            this.linkDebits.TabIndex = 1;
+            this.linkDebits.TabStop = true;
+            this.linkDebits.Text = "إدارة مستحقات الموردين";
+            this.linkDebits.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDebits_LinkClicked);
+            // 
             // linkCredits
             // 
             this.linkCredits.AutoSize = true;
@@ -201,6 +211,7 @@
             this.linkCredits.TabIndex = 1;
             this.linkCredits.TabStop = true;
             this.linkCredits.Text = "إدارة ديون العملاء";
+            this.linkCredits.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCredits_LinkClicked);
             // 
             // linkBuyOrders
             // 
@@ -211,6 +222,7 @@
             this.linkBuyOrders.TabIndex = 1;
             this.linkBuyOrders.TabStop = true;
             this.linkBuyOrders.Text = "إدارة  فواتيرالشراء";
+            this.linkBuyOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkBuyOrders_LinkClicked);
             // 
             // linkSellOrders
             // 
@@ -221,6 +233,7 @@
             this.linkSellOrders.TabIndex = 1;
             this.linkSellOrders.TabStop = true;
             this.linkSellOrders.Text = "إدارة فواتير البيع";
+            this.linkSellOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSellOrders_LinkClicked);
             // 
             // lblBuySellManagementTitle
             // 
@@ -232,16 +245,6 @@
             this.lblBuySellManagementTitle.TabIndex = 0;
             this.lblBuySellManagementTitle.Text = "إدارة البيع والشراء يتم من خلالها إدارة\r\n فواتير المحل بالكامل من فواتير بيع\r\n وش" +
     "راء وكذلك متابعة الديون\r\n والمستحقات المتعلقة بالمحل";
-            // 
-            // linkDebits
-            // 
-            this.linkDebits.AutoSize = true;
-            this.linkDebits.Location = new System.Drawing.Point(10, 129);
-            this.linkDebits.Name = "linkDebits";
-            this.linkDebits.Size = new System.Drawing.Size(149, 17);
-            this.linkDebits.TabIndex = 1;
-            this.linkDebits.TabStop = true;
-            this.linkDebits.Text = "إدارة مستحقات الموردين";
             // 
             // grbExpensesAndExternal
             // 
@@ -319,6 +322,66 @@
             this.grbFastOperations.TabStop = false;
             this.grbFastOperations.Text = "العمليات السريعة";
             // 
+            // linkSearchSellOrder
+            // 
+            this.linkSearchSellOrder.AutoSize = true;
+            this.linkSearchSellOrder.Location = new System.Drawing.Point(46, 125);
+            this.linkSearchSellOrder.Name = "linkSearchSellOrder";
+            this.linkSearchSellOrder.Size = new System.Drawing.Size(115, 17);
+            this.linkSearchSellOrder.TabIndex = 1;
+            this.linkSearchSellOrder.TabStop = true;
+            this.linkSearchSellOrder.Text = "بحث عن فاتورة بيع";
+            // 
+            // linkSearchBuyOrder
+            // 
+            this.linkSearchBuyOrder.AutoSize = true;
+            this.linkSearchBuyOrder.Location = new System.Drawing.Point(166, 125);
+            this.linkSearchBuyOrder.Name = "linkSearchBuyOrder";
+            this.linkSearchBuyOrder.Size = new System.Drawing.Size(126, 17);
+            this.linkSearchBuyOrder.TabIndex = 1;
+            this.linkSearchBuyOrder.TabStop = true;
+            this.linkSearchBuyOrder.Text = "بحث عن فاتورة شراء";
+            // 
+            // linkAddExpense
+            // 
+            this.linkAddExpense.AutoSize = true;
+            this.linkAddExpense.Location = new System.Drawing.Point(197, 108);
+            this.linkAddExpense.Name = "linkAddExpense";
+            this.linkAddExpense.Size = new System.Drawing.Size(95, 17);
+            this.linkAddExpense.TabIndex = 1;
+            this.linkAddExpense.TabStop = true;
+            this.linkAddExpense.Text = "إضافة مصروفات";
+            // 
+            // linkCollectExternalCredit
+            // 
+            this.linkCollectExternalCredit.AutoSize = true;
+            this.linkCollectExternalCredit.Location = new System.Drawing.Point(20, 91);
+            this.linkCollectExternalCredit.Name = "linkCollectExternalCredit";
+            this.linkCollectExternalCredit.Size = new System.Drawing.Size(141, 17);
+            this.linkCollectExternalCredit.TabIndex = 1;
+            this.linkCollectExternalCredit.TabStop = true;
+            this.linkCollectExternalCredit.Text = "جمع مستحقات خارجية";
+            // 
+            // linkPayExternalDebit
+            // 
+            this.linkPayExternalDebit.AutoSize = true;
+            this.linkPayExternalDebit.Location = new System.Drawing.Point(174, 91);
+            this.linkPayExternalDebit.Name = "linkPayExternalDebit";
+            this.linkPayExternalDebit.Size = new System.Drawing.Size(118, 17);
+            this.linkPayExternalDebit.TabIndex = 1;
+            this.linkPayExternalDebit.TabStop = true;
+            this.linkPayExternalDebit.Text = "تسديد دين خارجى";
+            // 
+            // linkSearchItem
+            // 
+            this.linkSearchItem.AutoSize = true;
+            this.linkSearchItem.Location = new System.Drawing.Point(70, 108);
+            this.linkSearchItem.Name = "linkSearchItem";
+            this.linkSearchItem.Size = new System.Drawing.Size(91, 17);
+            this.linkSearchItem.TabIndex = 1;
+            this.linkSearchItem.TabStop = true;
+            this.linkSearchItem.Text = "بحث عن صنف";
+            // 
             // linkPayDebit
             // 
             this.linkPayDebit.AutoSize = true;
@@ -328,6 +391,16 @@
             this.linkPayDebit.TabIndex = 1;
             this.linkPayDebit.TabStop = true;
             this.linkPayDebit.Text = "تسديد دين لمورد";
+            // 
+            // linkCollectCredit
+            // 
+            this.linkCollectCredit.AutoSize = true;
+            this.linkCollectCredit.Location = new System.Drawing.Point(6, 74);
+            this.linkCollectCredit.Name = "linkCollectCredit";
+            this.linkCollectCredit.Size = new System.Drawing.Size(155, 17);
+            this.linkCollectCredit.TabIndex = 1;
+            this.linkCollectCredit.TabStop = true;
+            this.linkCollectCredit.Text = "جمع مستحقات من عميل";
             // 
             // linkAddSellOrder
             // 
@@ -360,76 +433,6 @@
             this.lblFastOperationsTitle.Text = "العمليات السريعة هى مجموعة من العمليات التى يحتاجها\r\n المستخدم دائما موجودة مجمعة" +
     " هنا لسهولة الإستخدام";
             // 
-            // linkCollectCredit
-            // 
-            this.linkCollectCredit.AutoSize = true;
-            this.linkCollectCredit.Location = new System.Drawing.Point(6, 74);
-            this.linkCollectCredit.Name = "linkCollectCredit";
-            this.linkCollectCredit.Size = new System.Drawing.Size(155, 17);
-            this.linkCollectCredit.TabIndex = 1;
-            this.linkCollectCredit.TabStop = true;
-            this.linkCollectCredit.Text = "جمع مستحقات من عميل";
-            // 
-            // linkPayExternalDebit
-            // 
-            this.linkPayExternalDebit.AutoSize = true;
-            this.linkPayExternalDebit.Location = new System.Drawing.Point(174, 91);
-            this.linkPayExternalDebit.Name = "linkPayExternalDebit";
-            this.linkPayExternalDebit.Size = new System.Drawing.Size(118, 17);
-            this.linkPayExternalDebit.TabIndex = 1;
-            this.linkPayExternalDebit.TabStop = true;
-            this.linkPayExternalDebit.Text = "تسديد دين خارجى";
-            // 
-            // linkCollectExternalCredit
-            // 
-            this.linkCollectExternalCredit.AutoSize = true;
-            this.linkCollectExternalCredit.Location = new System.Drawing.Point(20, 91);
-            this.linkCollectExternalCredit.Name = "linkCollectExternalCredit";
-            this.linkCollectExternalCredit.Size = new System.Drawing.Size(141, 17);
-            this.linkCollectExternalCredit.TabIndex = 1;
-            this.linkCollectExternalCredit.TabStop = true;
-            this.linkCollectExternalCredit.Text = "جمع مستحقات خارجية";
-            // 
-            // linkSearchItem
-            // 
-            this.linkSearchItem.AutoSize = true;
-            this.linkSearchItem.Location = new System.Drawing.Point(70, 108);
-            this.linkSearchItem.Name = "linkSearchItem";
-            this.linkSearchItem.Size = new System.Drawing.Size(91, 17);
-            this.linkSearchItem.TabIndex = 1;
-            this.linkSearchItem.TabStop = true;
-            this.linkSearchItem.Text = "بحث عن صنف";
-            // 
-            // linkSearchBuyOrder
-            // 
-            this.linkSearchBuyOrder.AutoSize = true;
-            this.linkSearchBuyOrder.Location = new System.Drawing.Point(166, 125);
-            this.linkSearchBuyOrder.Name = "linkSearchBuyOrder";
-            this.linkSearchBuyOrder.Size = new System.Drawing.Size(126, 17);
-            this.linkSearchBuyOrder.TabIndex = 1;
-            this.linkSearchBuyOrder.TabStop = true;
-            this.linkSearchBuyOrder.Text = "بحث عن فاتورة شراء";
-            // 
-            // linkSearchSellOrder
-            // 
-            this.linkSearchSellOrder.AutoSize = true;
-            this.linkSearchSellOrder.Location = new System.Drawing.Point(46, 125);
-            this.linkSearchSellOrder.Name = "linkSearchSellOrder";
-            this.linkSearchSellOrder.Size = new System.Drawing.Size(115, 17);
-            this.linkSearchSellOrder.TabIndex = 1;
-            this.linkSearchSellOrder.TabStop = true;
-            this.linkSearchSellOrder.Text = "بحث عن فاتورة بيع";
-            // 
-            // linkAddExpense
-            // 
-            this.linkAddExpense.AutoSize = true;
-            this.linkAddExpense.Location = new System.Drawing.Point(197, 108);
-            this.linkAddExpense.Name = "linkAddExpense";
-            this.linkAddExpense.Size = new System.Drawing.Size(95, 17);
-            this.linkAddExpense.TabIndex = 1;
-            this.linkAddExpense.TabStop = true;
-            this.linkAddExpense.Text = "إضافة مصروفات";
-            // 
             // grbDailyReports
             // 
             this.grbDailyReports.BackColor = System.Drawing.Color.Transparent;
@@ -446,6 +449,26 @@
             this.grbDailyReports.TabIndex = 1;
             this.grbDailyReports.TabStop = false;
             this.grbDailyReports.Text = "إدارة تقارير الحالة اليومية";
+            // 
+            // linkViewSupplierOperations
+            // 
+            this.linkViewSupplierOperations.AutoSize = true;
+            this.linkViewSupplierOperations.Location = new System.Drawing.Point(143, 122);
+            this.linkViewSupplierOperations.Name = "linkViewSupplierOperations";
+            this.linkViewSupplierOperations.Size = new System.Drawing.Size(117, 17);
+            this.linkViewSupplierOperations.TabIndex = 1;
+            this.linkViewSupplierOperations.TabStop = true;
+            this.linkViewSupplierOperations.Text = "عرض حركات المورد";
+            // 
+            // linkViewCustomerOperations
+            // 
+            this.linkViewCustomerOperations.AutoSize = true;
+            this.linkViewCustomerOperations.Location = new System.Drawing.Point(285, 122);
+            this.linkViewCustomerOperations.Name = "linkViewCustomerOperations";
+            this.linkViewCustomerOperations.Size = new System.Drawing.Size(121, 17);
+            this.linkViewCustomerOperations.TabIndex = 1;
+            this.linkViewCustomerOperations.TabStop = true;
+            this.linkViewCustomerOperations.Text = "عرض حركات العميل";
             // 
             // linkViewCurrentItems
             // 
@@ -496,26 +519,6 @@
             this.lblDailyReportsTitle.Size = new System.Drawing.Size(320, 26);
             this.lblDailyReportsTitle.TabIndex = 0;
             this.lblDailyReportsTitle.Text = "مجموعة من التقارير التى يحتاجها  المستخدم بشكل دورى خلال عمل\r\n البرنامج";
-            // 
-            // linkViewCustomerOperations
-            // 
-            this.linkViewCustomerOperations.AutoSize = true;
-            this.linkViewCustomerOperations.Location = new System.Drawing.Point(285, 122);
-            this.linkViewCustomerOperations.Name = "linkViewCustomerOperations";
-            this.linkViewCustomerOperations.Size = new System.Drawing.Size(121, 17);
-            this.linkViewCustomerOperations.TabIndex = 1;
-            this.linkViewCustomerOperations.TabStop = true;
-            this.linkViewCustomerOperations.Text = "عرض حركات العميل";
-            // 
-            // linkViewSupplierOperations
-            // 
-            this.linkViewSupplierOperations.AutoSize = true;
-            this.linkViewSupplierOperations.Location = new System.Drawing.Point(143, 122);
-            this.linkViewSupplierOperations.Name = "linkViewSupplierOperations";
-            this.linkViewSupplierOperations.Size = new System.Drawing.Size(117, 17);
-            this.linkViewSupplierOperations.TabIndex = 1;
-            this.linkViewSupplierOperations.TabStop = true;
-            this.linkViewSupplierOperations.Text = "عرض حركات المورد";
             // 
             // grbFinancialManagement
             // 
@@ -597,7 +600,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(812, 453);
             this.Controls.Add(this.grbFastOperations);
             this.Controls.Add(this.grbExpensesAndExternal);
